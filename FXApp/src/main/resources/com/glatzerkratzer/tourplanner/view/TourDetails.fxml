@@ -5,15 +5,15 @@
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsController">
     <ToolBar>
-        <Label text="%MediaDetails_Name"/>
+        <Label text="%TourDetails_Name"/>
         <TextField fx:id="nameTextField" HBox.hgrow="ALWAYS"/>
     </ToolBar>
     <SplitPane dividerPositions="0.5" orientation="VERTICAL" VBox.vgrow="ALWAYS">
         <TabPane tabClosingPolicy="UNAVAILABLE">
-            <Tab text="%MediaDetails_Tab_Content">
+            <Tab text="%TourDetails_Tab_Content">
                 <AnchorPane/>
             </Tab>
-            <Tab text="%MediaDetails_Tab_Description">
+            <Tab text="%TourDetails_Tab_Description">
                 <TextArea/>
             </Tab>
         </TabPane>

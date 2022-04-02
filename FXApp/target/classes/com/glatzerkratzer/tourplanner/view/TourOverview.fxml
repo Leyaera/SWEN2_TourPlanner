@@ -8,11 +8,11 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.glatzerkratzer.tourplanner.view.TourOverviewController">
     <ToolBar>
-        <Label text="%MediaOverview_Items"/>
+        <Label text="%TourOverview_Items"/>
         <Pane HBox.hgrow="ALWAYS"/>
         <Button text="+" onAction="#onButtonAdd"/>
         <Button text="-" onAction="#onButtonRemove"/>
         <Button text="..."/>
     </ToolBar>
-    <ListView fx:id="mediaItemList" VBox.vgrow="ALWAYS"/>
+    <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS"/>
 </VBox>

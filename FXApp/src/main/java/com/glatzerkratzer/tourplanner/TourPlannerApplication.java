@@ -21,7 +21,7 @@ public class TourPlannerApplication extends Application {
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Media Library");
+        primaryStage.setTitle("SWEN2 Tour Planner | GlatzerKratzer");
         primaryStage.show();
     }
 }
