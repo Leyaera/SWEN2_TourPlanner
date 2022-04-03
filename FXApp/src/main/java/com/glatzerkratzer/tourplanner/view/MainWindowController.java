@@ -31,7 +31,7 @@ public class MainWindowController {
         Platform.exit();
     }
     public void onMenuHelpAboutClicked(ActionEvent actionEvent) {
-        Alert aboutBox = new Alert(Alert.AlertType.INFORMATION, "Semesterproject BIF4-SWE2\nby Bernhard Wallisch");
+        Alert aboutBox = new Alert(Alert.AlertType.INFORMATION, "Semesterprojekt BIF4-SWEN2\nby\nStefanie Glatzer\nCarmen Kratzer\nSS 2022");
         aboutBox.setTitle("About TourPlanner");
         aboutBox.showAndWait();
     }
