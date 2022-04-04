@@ -8,6 +8,7 @@
 
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 <TextFlow xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsDescriptionController">
@@ -19,4 +20,8 @@
     <Text fx:id="tourDescriptionDistance"/>
     <Text fx:id="tourDescriptionDuration"/>
     <Text fx:id="tourDescriptionDescription"/>
+
+    <stylesheets>
+        <URL value="@css/tourDetailsDescriptionStyle.css" />
+    </stylesheets>
 </TextFlow>
