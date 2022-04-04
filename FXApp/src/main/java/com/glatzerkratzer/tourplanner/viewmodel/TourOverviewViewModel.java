@@ -14,6 +14,7 @@ public class TourOverviewViewModel {
         void changeSelection(TourItem tourItem);
     }
 
+
     private List<SelectionChangedListener> listeners = new ArrayList<>();
 
     private ObservableList<TourItem> observableTourItems = FXCollections.observableArrayList();
@@ -21,29 +22,10 @@ public class TourOverviewViewModel {
     public TourOverviewViewModel()
     {
         List<TourItem> tourItems = DAL.getInstance().tourDao().getAll();
-        //DEBUG
-        /*
-        for (var tour : tourItems) {
-            System.out.println(tour.getName() + "\n");
-        }
-        */
-
         setTours( tourItems );
-        //DEBUG
-        /*
-        for (var tour : observableTourItems) {
-            System.out.println(tour.getName() + "\n");
-        }
-        */
     }
 
     public ObservableList<TourItem> getObservableTours() {
-        //DEBUG
-        /*
-        for (var tour : observableTourItems) {
-            System.out.println(tour.getName() + "\n");
-        }
-        */
         return observableTourItems;
     }
 

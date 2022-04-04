@@ -1,20 +1,19 @@
 package com.glatzerkratzer.tourplanner.view;
 
-import com.glatzerkratzer.tourplanner.viewmodel.MainWindowViewModel;
-import com.glatzerkratzer.tourplanner.viewmodel.SearchBarViewModel;
-import com.glatzerkratzer.tourplanner.viewmodel.TourDetailsViewModel;
-import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
+import com.glatzerkratzer.tourplanner.viewmodel.*;
 
 public class ControllerFactory {
     private final MainWindowViewModel mainWindowViewModel;
     private final SearchBarViewModel searchBarViewModel;
     private final TourOverviewViewModel tourOverviewViewModel;
     private final TourDetailsViewModel tourDetailsViewModel;
+    private final TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
 
     public ControllerFactory() {
         searchBarViewModel = new SearchBarViewModel();
         tourOverviewViewModel = new TourOverviewViewModel();
-        tourDetailsViewModel = new TourDetailsViewModel();
+        tourDetailsDescriptionViewModel = new TourDetailsDescriptionViewModel();
+        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel);
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourOverviewViewModel, tourDetailsViewModel);
     }
 
@@ -30,6 +29,8 @@ public class ControllerFactory {
             return new TourDetailsController(tourDetailsViewModel);
         } else if (controllerClass == TourOverviewController.class) {
             return new TourOverviewController(tourOverviewViewModel);
+        } else if (controllerClass == TourDetailsDescriptionController.class) {
+            return new TourDetailsDescriptionController(tourDetailsDescriptionViewModel);
         }
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }

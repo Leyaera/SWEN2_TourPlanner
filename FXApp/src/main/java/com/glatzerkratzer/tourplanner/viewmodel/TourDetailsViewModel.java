@@ -11,60 +11,53 @@ import java.util.Arrays;
 
 public class TourDetailsViewModel {
     private TourItem tourItemModel;
+    private TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
     private volatile boolean isInitValue = false;
 
-    private final StringProperty name = new SimpleStringProperty();
-    private final DoubleProperty distance = new SimpleDoubleProperty();
-    private final StringProperty plannedTime = new SimpleStringProperty();
+    private final StringProperty mapPath = new SimpleStringProperty();
 
-    public TourDetailsViewModel() {
-        name.addListener( (arg, oldVal, newVal)->updateTourModel());
+    public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel) {
+        this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
+        //name.addListener( (arg, oldVal, newVal)->updateTourModel());
     }
 
-    public String getName() {
-        return name.get();
+    public String getMapPath() {
+        return mapPath.get();
     }
-
-    public StringProperty nameProperty() {
-        return name;
-    }
-
-    public double getDistance() {
-        return distance.get();
-    }
-
-    public DoubleProperty distanceProperty() {
-        return distance;
-    }
-
-    public String getPlannedTime() {
-        return plannedTime.get();
-    }
-
-    public StringProperty plannedTimeProperty() {
-        return plannedTime;
+    public StringProperty mapPathProperty() {
+        return mapPath;
     }
 
     public void setTourModel(TourItem tourItemModel) {
         isInitValue = true;
-        if( tourItemModel ==null ) {
+        if( tourItemModel == null ) {
             // select the first in the list
-            name.set("");
-            distance.set(0.0);
-            plannedTime.set("");
+            this.tourDetailsDescriptionViewModel.setName("");
+            this.tourDetailsDescriptionViewModel.setDescription("");
+            this.tourDetailsDescriptionViewModel.setStart("");
+            this.tourDetailsDescriptionViewModel.setDestination("");
+            this.tourDetailsDescriptionViewModel.setTransportType("");
+            this.tourDetailsDescriptionViewModel.setDistance(0.0);
+            this.tourDetailsDescriptionViewModel.setDuration(0.0);
+            mapPath.set("");
             return;
         }
-        System.out.println("setTourModel name=" + tourItemModel.getName() + ", distance=" + tourItemModel.getDuration() + ", plannedTime=" + tourItemModel.getInformation());
+        System.out.println("setTourModel name=" + tourItemModel.getName() + ", description=" + tourItemModel.getDescription() + ", distance=" + tourItemModel.getDistance() + ", duration=" + tourItemModel.getDuration());
         this.tourItemModel = tourItemModel;
-        name.setValue( tourItemModel.getName() );
-        distance.set( tourItemModel.getDuration() );
-        plannedTime.set( tourItemModel.getInformation() );
+        this.tourDetailsDescriptionViewModel.setName( tourItemModel.getName() );
+        this.tourDetailsDescriptionViewModel.setDescription( tourItemModel.getDescription() );
+        this.tourDetailsDescriptionViewModel.setStart( tourItemModel.getStart() );
+        this.tourDetailsDescriptionViewModel.setDestination( tourItemModel.getDestination() );
+        this.tourDetailsDescriptionViewModel.setTransportType( tourItemModel.getTransportType().toString() );
+        this.tourDetailsDescriptionViewModel.setDistance( tourItemModel.getDistance() );
+        this.tourDetailsDescriptionViewModel.setDuration( tourItemModel.getDuration() );
+        mapPath.setValue( tourItemModel.getMapPath() );
         isInitValue = false;
     }
 
     private void updateTourModel() {
         if( !isInitValue )
-            DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), name.get(), distance.get(), plannedTime.get()));
+            DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), this.tourDetailsDescriptionViewModel.getName(), this.tourDetailsDescriptionViewModel.getDescription(), this.tourDetailsDescriptionViewModel.getStart(), this.tourDetailsDescriptionViewModel.getDestination(), this.tourDetailsDescriptionViewModel.getTransportType(), this.tourDetailsDescriptionViewModel.getDistance(), this.tourDetailsDescriptionViewModel.getDuration(), mapPath.get()));
     }
 
 

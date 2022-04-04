@@ -18,10 +18,10 @@ public class TourItem implements Serializable {
     private TransportType transportType;
     private double distance;
     private double duration; // estimated duration of route
-    private String information; // path to route image with the tour map
+    private String mapPath; // path to route image with the tour map
 
     @Override
     public String toString() {
-        return name;
+       return name;
     }
 }

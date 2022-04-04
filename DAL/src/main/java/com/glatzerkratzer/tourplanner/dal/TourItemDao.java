@@ -38,13 +38,13 @@ public class TourItemDao implements Dao<TourItem> {
     public void update(TourItem tourItem, List<?> params) {
         System.out.println(params);
         tourItem.setName(Objects.requireNonNull(params.get(1), "Name cannot be null").toString());
-        tourItem.setDescription(Objects.requireNonNull(params.get(1), "Description cannot be null").toString());
-        tourItem.setStart(Objects.requireNonNull(params.get(1), "Start cannot be null").toString());
-        tourItem.setDestination(Objects.requireNonNull(params.get(1), "Destination cannot be null").toString());
-        tourItem.setTransportType(TransportType.valueOf(Objects.requireNonNull(params.get(1), "TransportType cannot be null").toString()));
-        tourItem.setDistance(Double.parseDouble(params.get(2).toString()));
-        tourItem.setDuration(Double.parseDouble(params.get(2).toString()));
-        tourItem.setInformation((params.get(3)==null)?"":params.get(3).toString());
+        tourItem.setDescription(Objects.requireNonNull(params.get(2), "Description cannot be null").toString());
+        tourItem.setStart(Objects.requireNonNull(params.get(3), "Start cannot be null").toString());
+        tourItem.setDestination(Objects.requireNonNull(params.get(4), "Destination cannot be null").toString());
+        tourItem.setTransportType(TransportType.valueOf(Objects.requireNonNull(params.get(5), "TransportType cannot be null").toString()));
+        tourItem.setDistance(Double.parseDouble(params.get(6).toString()));
+        tourItem.setDuration(Double.parseDouble(params.get(7).toString()));
+        tourItem.setMapPath((params.get(3)==null)?"":params.get(8).toString());
     }
 
     @Override

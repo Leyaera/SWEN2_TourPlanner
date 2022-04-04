@@ -2,18 +2,40 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsController">
+
+    <!--
     <ToolBar>
         <Label text="%TourDetails_Name"/>
         <TextField fx:id="nameTextField" HBox.hgrow="ALWAYS"/>
     </ToolBar>
+    -->
     <SplitPane dividerPositions="0.5" orientation="VERTICAL" VBox.vgrow="ALWAYS">
         <TabPane tabClosingPolicy="UNAVAILABLE">
-            <Tab text="%TourDetails_Tab_Content">
-                <AnchorPane/>
+            <Tab fx:id="tourDetails_tab_description" text="%TourDetails_Tab_Description">
+                <content>
+                    <fx:include fx:id="tourDetailsTabDescription" source="TourDetailsDescription.fxml"/>
+                </content>
             </Tab>
-            <Tab text="%TourDetails_Tab_Description">
+            <Tab fx:id="tourDetails_tab_map" text="%TourDetails_Tab_Map">
+                <Pane>
+                    <children>
+                        <ImageView>
+                            <image>
+                                <Image url="@default_map.jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </Tab>
+            <Tab fx:id="tourDetails_tab_highlights" text="%TourDetails_Tab_Highlights">
+                <TextArea/>
+            </Tab>
+            <Tab fx:id="tourDetails_tab_log" text="%TourDetails_Tab_Log">
                 <TextArea/>
             </Tab>
         </TabPane>

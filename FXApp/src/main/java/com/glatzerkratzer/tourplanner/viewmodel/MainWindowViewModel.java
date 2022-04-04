@@ -5,13 +5,13 @@ import com.glatzerkratzer.tourplanner.model.TourItem;
 
 public class MainWindowViewModel {
     private SearchBarViewModel searchBarViewModel;
-    private TourOverviewViewModel mediaOverviewViewModel;
-    private TourDetailsViewModel mediaDetailsViewModel;
+    private TourOverviewViewModel tourOverviewViewModel;
+    private TourDetailsViewModel tourDetailsViewModel;
 
-    public MainWindowViewModel(SearchBarViewModel searchBarViewModel, TourOverviewViewModel mediaOverviewViewModel, TourDetailsViewModel mediaDetailsViewModel) {
+    public MainWindowViewModel(SearchBarViewModel searchBarViewModel, TourOverviewViewModel tourOverviewViewModel, TourDetailsViewModel tourDetailsViewModel) {
         this.searchBarViewModel = searchBarViewModel;
-        this.mediaOverviewViewModel = mediaOverviewViewModel;
-        this.mediaDetailsViewModel = mediaDetailsViewModel;
+        this.tourOverviewViewModel = tourOverviewViewModel;
+        this.tourDetailsViewModel = tourDetailsViewModel;
 
         this.searchBarViewModel.addSearchListener(searchString->searchTours(searchString));
         // instead of the lambda-expression from above, you also can use the following "classical" event-handler implementation with anonymous inner classes
@@ -23,15 +23,15 @@ public class MainWindowViewModel {
 //            }
 //        });
 
-        this.mediaOverviewViewModel.addSelectionChangedListener(selectedTour->selectTour(selectedTour));
+        this.tourOverviewViewModel.addSelectionChangedListener(selectedTour->selectTour(selectedTour));
     }
 
-    private void selectTour(TourItem selectedMediaItem) {
-        mediaDetailsViewModel.setTourModel(selectedMediaItem);
+    private void selectTour(TourItem selectedTourItem) {
+        tourDetailsViewModel.setTourModel(selectedTourItem);
     }
 
     private void searchTours(String searchString) {
         var tours = BL.getInstance().findMatchingTours( searchString );
-        mediaOverviewViewModel.setTours(tours);
+        tourOverviewViewModel.setTours(tours);
     }
 }

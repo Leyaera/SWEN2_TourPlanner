@@ -2,24 +2,29 @@ package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.viewmodel.TourDetailsViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class TourDetailsController {
+
+
     @FXML
-    public TextField nameTextField;
+    public TextArea tourDescriptionText;
 
     private final TourDetailsViewModel tourDetailsViewModel;
 
-    public TourDetailsController(TourDetailsViewModel mediaDetailsViewModel) {
-        this.tourDetailsViewModel = mediaDetailsViewModel;
+    public TourDetailsController(TourDetailsViewModel tourDetailsViewModel) {
+        this.tourDetailsViewModel = tourDetailsViewModel;
     }
 
-    public TourDetailsViewModel getMediaDetailsViewModel() {
+    public TourDetailsViewModel getTourDetailsViewModel() {
         return tourDetailsViewModel;
     }
 
     @FXML
     void initialize() {
-        nameTextField.textProperty().bindBidirectional(tourDetailsViewModel.nameProperty());
+        //tourDescriptionText.textProperty().bindBidirectional(tourDetailsViewModel.nameProperty());
+        //tourDescriptionTextDescription.textProperty().bindBidirectional(tourDetailsViewModel.descriptionProperty());
     }
 }
