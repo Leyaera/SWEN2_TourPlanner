@@ -1,5 +1,6 @@
 package com.glatzerkratzer.tourplanner.dal;
 
+import com.glatzerkratzer.tourplanner.database.DatabaseService;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 
 public class DAL {

@@ -13,6 +13,7 @@
         <module>DAL</module>
         <module>FXApp</module>
         <module>BL</module>
+        <module>DB</module>
     </modules>
 
     <properties>
