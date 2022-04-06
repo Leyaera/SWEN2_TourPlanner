@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.glatzerkratzer.tourplanner.view.TourOverviewController">
@@ -15,4 +16,7 @@
         <Button text="%TourOverview_Button_Edit" onAction="#onButtonEdit"/>
     </ToolBar>
     <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS"/>
+    <stylesheets>
+        <URL value="@css/tourOverviewStyle.css" />
+    </stylesheets>
 </VBox>
