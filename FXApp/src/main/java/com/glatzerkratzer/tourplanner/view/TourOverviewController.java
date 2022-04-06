@@ -26,14 +26,6 @@ public class TourOverviewController {
 
     @FXML
     void initialize() {
-        //DEBUG
-        /*
-        for (var tour : tourOverviewViewModel.getObservableTours()) {
-            System.out.println(tour.getName() + "\n");
-        }
-        */
-
-
         tourItemList.setItems(tourOverviewViewModel.getObservableTours());
         tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
     }

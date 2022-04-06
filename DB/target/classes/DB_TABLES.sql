@@ -7,7 +7,10 @@ create table tours
     description varchar(1024),
     start varchar(25) not null,
     destination varchar(25) not null,
-    "transportType" varchar(10) not null
+    "transportType" varchar(10) not null,
+    distance real,
+    duration real,
+    "mapPath" varchar(255)
 );
 
 alter table tours owner to postgres;
