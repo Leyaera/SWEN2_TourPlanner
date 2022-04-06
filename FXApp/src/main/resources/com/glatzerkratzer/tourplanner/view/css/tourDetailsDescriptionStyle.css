@@ -3,3 +3,8 @@
     -fx-padding: 10 10 10 10;
     -fx-font-weight: 700;
 }
+
+#tourDescriptionStartTag, #tourDescriptionDestinationTag, #tourDescriptionDescriptionTag {
+    -fx-padding: 10 10 10 10;
+    -fx-font-weight: 700;
+}
