@@ -18,7 +18,7 @@ public class TourDetailsViewModel {
 
     public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel) {
         this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
-        this.tourDetailsDescriptionViewModel.nameProperty().addListener( (arg, oldVal, newVal)->updateTourModel());
+        //name.addListener( (arg, oldVal, newVal)->updateTourModel());
     }
 
     public String getMapPath() {
@@ -33,8 +33,11 @@ public class TourDetailsViewModel {
         if( tourItemModel == null ) {
             // select the first in the list
             this.tourDetailsDescriptionViewModel.setName("");
+            this.tourDetailsDescriptionViewModel.setTourDescriptionDescriptionTag();
             this.tourDetailsDescriptionViewModel.setDescription("");
+            this.tourDetailsDescriptionViewModel.setTourDescriptionStartTag();
             this.tourDetailsDescriptionViewModel.setStart("");
+            this.tourDetailsDescriptionViewModel.setTourDescriptionDestinationTag();
             this.tourDetailsDescriptionViewModel.setDestination("");
             this.tourDetailsDescriptionViewModel.setTransportType("");
             this.tourDetailsDescriptionViewModel.setDistance(0.0);
@@ -42,10 +45,14 @@ public class TourDetailsViewModel {
             mapPath.set("");
             return;
         }
+
         this.tourItemModel = tourItemModel;
         this.tourDetailsDescriptionViewModel.setName( tourItemModel.getName() );
+        this.tourDetailsDescriptionViewModel.setTourDescriptionDescriptionTag();
         this.tourDetailsDescriptionViewModel.setDescription( tourItemModel.getDescription() );
+        this.tourDetailsDescriptionViewModel.setTourDescriptionStartTag();
         this.tourDetailsDescriptionViewModel.setStart( tourItemModel.getStart() );
+        this.tourDetailsDescriptionViewModel.setTourDescriptionDestinationTag();
         this.tourDetailsDescriptionViewModel.setDestination( tourItemModel.getDestination() );
         this.tourDetailsDescriptionViewModel.setTransportType( tourItemModel.getTransportType().toString() );
         this.tourDetailsDescriptionViewModel.setDistance( tourItemModel.getDistance() );

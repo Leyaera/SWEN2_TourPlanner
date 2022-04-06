@@ -64,6 +64,6 @@ public class TourOverviewController {
     }
 
     public void onButtonEdit(ActionEvent actionEvent) {
-
+        //tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
     }
 }

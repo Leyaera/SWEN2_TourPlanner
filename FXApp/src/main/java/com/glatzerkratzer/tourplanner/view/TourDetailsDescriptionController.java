@@ -2,10 +2,10 @@ package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.viewmodel.TourDetailsDescriptionViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class TourDetailsDescriptionController {
     @FXML public Text tourDescriptionName;
@@ -15,13 +15,17 @@ public class TourDetailsDescriptionController {
     @FXML public Text tourDescriptionDistance;
     @FXML public Text tourDescriptionDuration;
     @FXML public Text tourDescriptionDescription;
+    @FXML public Text tourDescriptionStartTag;
+    @FXML public Text tourDescriptionDestinationTag;
+    @FXML public Text tourDescriptionDescriptionTag;
 
     private final TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
-    private Locale locale;
 
     public TourDetailsDescriptionController(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel, Locale locale) {
         this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
-        this.locale = locale;
+        this.tourDetailsDescriptionViewModel.locale = locale;
+        this.tourDetailsDescriptionViewModel.bundle = ResourceBundle.getBundle("com.glatzerkratzer.tourplanner.view." + "gui_strings", locale);
+
     }
 
     public TourDetailsDescriptionViewModel getTourDetailsDescriptionViewModel() {
@@ -30,6 +34,9 @@ public class TourDetailsDescriptionController {
 
     @FXML
     void initialize() {
+        tourDescriptionStartTag.textProperty().bindBidirectional(tourDetailsDescriptionViewModel.TourDescriptionStartTagProperty());
+        tourDescriptionDestinationTag.textProperty().bindBidirectional(tourDetailsDescriptionViewModel.TourDescriptionDestinationTagProperty());
+        tourDescriptionDescriptionTag.textProperty().bindBidirectional(tourDetailsDescriptionViewModel.TourDescriptionDescriptionTagProperty());
         tourDescriptionName.textProperty().bindBidirectional(tourDetailsDescriptionViewModel.nameProperty());
         tourDescriptionTransportType.textProperty().bindBidirectional(tourDetailsDescriptionViewModel.transportTypeProperty());
         tourDescriptionStart.textProperty().bindBidirectional(tourDetailsDescriptionViewModel.startProperty());

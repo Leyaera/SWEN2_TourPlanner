@@ -23,6 +23,7 @@ public class ControllerFactory {
     // Factory-Method Pattern
     //
     public Object create(Class<?> controllerClass, Locale locale) {
+        this.tourDetailsDescriptionViewModel.locale = locale;
         if (controllerClass == MainWindowController.class) {
             return new MainWindowController(mainWindowViewModel, locale);
         } else if (controllerClass == SearchBarController.class) {
