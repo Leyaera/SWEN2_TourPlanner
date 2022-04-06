@@ -24,7 +24,7 @@ public class FXMLDependencyInjection {
                 FXMLDependencyInjection.class.getResource("/com/glatzerkratzer/tourplanner/view/" + location),
                 ResourceBundle.getBundle("com.glatzerkratzer.tourplanner.view." + "gui_strings", locale),
                 new JavaFXBuilderFactory(),
-                controllerClass-> ControllerFactory.getInstance().create(controllerClass)
+                controllerClass-> ControllerFactory.getInstance().create(controllerClass, locale)
                 );
     }
 }

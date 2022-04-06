@@ -2,6 +2,8 @@ package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.viewmodel.*;
 
+import java.util.Locale;
+
 public class ControllerFactory {
     private final MainWindowViewModel mainWindowViewModel;
     private final SearchBarViewModel searchBarViewModel;
@@ -20,17 +22,17 @@ public class ControllerFactory {
     //
     // Factory-Method Pattern
     //
-    public Object create(Class<?> controllerClass) {
+    public Object create(Class<?> controllerClass, Locale locale) {
         if (controllerClass == MainWindowController.class) {
-            return new MainWindowController(mainWindowViewModel);
+            return new MainWindowController(mainWindowViewModel, locale);
         } else if (controllerClass == SearchBarController.class) {
-            return new SearchBarController(searchBarViewModel);
+            return new SearchBarController(searchBarViewModel, locale);
         } else if (controllerClass == TourDetailsController.class) {
-            return new TourDetailsController(tourDetailsViewModel);
+            return new TourDetailsController(tourDetailsViewModel, locale);
         } else if (controllerClass == TourOverviewController.class) {
-            return new TourOverviewController(tourOverviewViewModel);
+            return new TourOverviewController(tourOverviewViewModel, locale);
         } else if (controllerClass == TourDetailsDescriptionController.class) {
-            return new TourDetailsDescriptionController(tourDetailsDescriptionViewModel);
+            return new TourDetailsDescriptionController(tourDetailsDescriptionViewModel, locale);
         }
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }

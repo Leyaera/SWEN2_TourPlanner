@@ -4,6 +4,7 @@ import com.glatzerkratzer.tourplanner.database.DatabaseService;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.*;
 
@@ -16,11 +17,6 @@ public class TourItemDao implements Dao<TourItem> {
             Connection connection = DatabaseService.getDatabaseService().getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT id, name, description, start, destination, transportType FROM tours;");
-
-            // DEBUG
-            if (resultSet == null) {
-                System.out.println("resultSet is null");
-            }
 
             while(resultSet.next()) {
                 tourItems.add(new TourItem(
@@ -54,10 +50,34 @@ public class TourItemDao implements Dao<TourItem> {
 
     @Override
     public TourItem create() {
-        var tour = new TourItem(nextId, "New Tour " + nextId, "", "", "", TransportType.HIKE, 0, 0, "");
-        tourItems.add(tour);
+        var tour = new TourItem("New Tour " +  nextId);
         nextId++;
+        tourItems.add(tour);
         return tour;
+    }
+
+    @Override
+    public void add(TourItem tourItem) {
+        try {
+            Connection connection = DatabaseService.getDatabaseService().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tours(name, description, start, destination, transporttype) VALUES(?, ?, ?, ?, ?);");
+            preparedStatement.setString(1, tourItem.getName());
+            preparedStatement.setString(2, tourItem.getDescription());
+            preparedStatement.setString(3, tourItem.getStart());
+            preparedStatement.setString(4, tourItem.getDestination());
+            preparedStatement.setString(5, tourItem.getTransportType().toString());
+
+            int affectedRows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+
+            if (affectedRows == 0) {
+                System.out.println("affected Rows in update = 0");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -68,6 +88,34 @@ public class TourItemDao implements Dao<TourItem> {
         tourItem.setStart(Objects.requireNonNull(params.get(3), "Start cannot be null").toString());
         tourItem.setDestination(Objects.requireNonNull(params.get(4), "Destination cannot be null").toString());
         tourItem.setTransportType(TransportType.valueOf(Objects.requireNonNull(params.get(5), "TransportType cannot be null").toString()));
+
+        if (tourItem.getId() > 0) {
+            try {
+                Connection connection = DatabaseService.getDatabaseService().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET (name, description, start, destination, transporttype) VALUES (?, ?, ?, ?, ?) WHERE id = ?;");
+                preparedStatement.setString(1, tourItem.getName());
+                preparedStatement.setString(2, tourItem.getDescription());
+                preparedStatement.setString(3, tourItem.getStart());
+                preparedStatement.setString(4, tourItem.getDestination());
+                preparedStatement.setString(5, tourItem.getTransportType().toString());
+                preparedStatement.setInt(6, tourItem.getId());
+
+                int affectedRows = preparedStatement.executeUpdate();
+                preparedStatement.close();
+                connection.close();
+
+                if (affectedRows == 0) {
+                    System.out.println("affected Rows in update = 0");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
+        // If Tour(ID) does not already exist --> add new Tour
+        add(tourItem);
     }
 
     @Override

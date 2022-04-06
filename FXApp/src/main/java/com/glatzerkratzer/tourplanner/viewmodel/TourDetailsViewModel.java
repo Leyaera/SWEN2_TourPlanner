@@ -18,7 +18,7 @@ public class TourDetailsViewModel {
 
     public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel) {
         this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
-        //name.addListener( (arg, oldVal, newVal)->updateTourModel());
+        this.tourDetailsDescriptionViewModel.nameProperty().addListener( (arg, oldVal, newVal)->updateTourModel());
     }
 
     public String getMapPath() {
@@ -42,7 +42,6 @@ public class TourDetailsViewModel {
             mapPath.set("");
             return;
         }
-        System.out.println("setTourModel name=" + tourItemModel.getName() + ", description=" + tourItemModel.getDescription() + ", distance=" + tourItemModel.getDistance() + ", duration=" + tourItemModel.getDuration());
         this.tourItemModel = tourItemModel;
         this.tourDetailsDescriptionViewModel.setName( tourItemModel.getName() );
         this.tourDetailsDescriptionViewModel.setDescription( tourItemModel.getDescription() );
@@ -57,7 +56,7 @@ public class TourDetailsViewModel {
 
     private void updateTourModel() {
         if( !isInitValue )
-            DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), this.tourDetailsDescriptionViewModel.getName(), this.tourDetailsDescriptionViewModel.getDescription(), this.tourDetailsDescriptionViewModel.getStart(), this.tourDetailsDescriptionViewModel.getDestination(), this.tourDetailsDescriptionViewModel.getTransportType(), this.tourDetailsDescriptionViewModel.getDistance(), this.tourDetailsDescriptionViewModel.getDuration(), mapPath.get()));
+            DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), this.tourDetailsDescriptionViewModel.getName(), this.tourDetailsDescriptionViewModel.getDescription(), this.tourDetailsDescriptionViewModel.getStart(), this.tourDetailsDescriptionViewModel.getDestination(), this.tourDetailsDescriptionViewModel.getTransportType()));
     }
 
 

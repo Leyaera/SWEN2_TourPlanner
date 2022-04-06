@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.util.Locale;
+
 public class SearchBarController {
     @FXML
     public Button searchButton;
@@ -13,9 +15,11 @@ public class SearchBarController {
     public TextField searchTextField;
 
     private final SearchBarViewModel searchBarViewModel;
+    private Locale locale;
 
-    public SearchBarController(SearchBarViewModel searchBarViewModel) {
+    public SearchBarController(SearchBarViewModel searchBarViewModel, Locale locale) {
         this.searchBarViewModel = searchBarViewModel;
+        this.locale = locale;
     }
 
     public SearchBarViewModel getSearchBarViewModel() {

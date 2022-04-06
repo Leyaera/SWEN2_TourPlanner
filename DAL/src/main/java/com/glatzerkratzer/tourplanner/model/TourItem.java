@@ -20,6 +20,18 @@ public class TourItem implements Serializable {
     private double duration; // estimated duration of route
     private String mapPath; // path to route image with the tour map
 
+    public TourItem(String name) {
+        this.id = 0;
+        this.name = name;
+        this.description = "";
+        this.start = "";
+        this.destination = "";
+        this.transportType = TransportType.NOT_SET;
+        this.distance = 0.0;
+        this.duration = 0.0;
+        this.mapPath = "";
+    }
+
     @Override
     public String toString() {
        return name;

@@ -6,6 +6,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.util.Locale;
+
 public class TourDetailsController {
 
 
@@ -13,9 +15,11 @@ public class TourDetailsController {
     public TextArea tourDescriptionText;
 
     private final TourDetailsViewModel tourDetailsViewModel;
+    private Locale locale;
 
-    public TourDetailsController(TourDetailsViewModel tourDetailsViewModel) {
+    public TourDetailsController(TourDetailsViewModel tourDetailsViewModel, Locale locale) {
         this.tourDetailsViewModel = tourDetailsViewModel;
+        this.locale = locale;
     }
 
     public TourDetailsViewModel getTourDetailsViewModel() {

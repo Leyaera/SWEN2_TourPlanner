@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 
+import java.util.Locale;
+
 public class TourDetailsDescriptionController {
     @FXML public Text tourDescriptionName;
     @FXML public Text tourDescriptionTransportType;
@@ -15,9 +17,11 @@ public class TourDetailsDescriptionController {
     @FXML public Text tourDescriptionDescription;
 
     private final TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
+    private Locale locale;
 
-    public TourDetailsDescriptionController(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel) {
+    public TourDetailsDescriptionController(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel, Locale locale) {
         this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
+        this.locale = locale;
     }
 
     public TourDetailsDescriptionViewModel getTourDetailsDescriptionViewModel() {
