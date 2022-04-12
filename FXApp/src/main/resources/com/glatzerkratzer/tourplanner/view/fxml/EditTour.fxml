@@ -11,78 +11,78 @@
 <?import javafx.scene.text.Text?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.glatzerkratzer.tourplanner.view.AddTourController"
+          fx:controller="com.glatzerkratzer.tourplanner.view.EditTourController"
           hgap="10" vgap="10"
           prefHeight="400.0" prefWidth="600.0">
     <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
 
-    <Label fx:id="addTourHeader" text="%AddTour_Header"
-          GridPane.columnIndex="0"
-          GridPane.rowIndex="0"
-          GridPane.columnSpan="3"/>
+    <Label fx:id="editTourHeader" text="%EditTour_Header"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="0"
+           GridPane.columnSpan="3"/>
 
-    <Label fx:id="addTourName" text="%AddTour_Name"
+    <Label fx:id="editTourName" text="%AddTour_Name"
            GridPane.columnIndex="0"
            GridPane.rowIndex="1"/>
-    <TextField fx:id="addTourNameTextField"
+    <TextField fx:id="editTourNameTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="1" />
-    <Label fx:id="addTourNameRequired" text="*"
+    <Label fx:id="editTourNameRequired" text="*"
            GridPane.columnIndex="2"
            GridPane.rowIndex="1"/>
 
-    <Label fx:id="addTourStart" text="%AddTour_Start"
+    <Label fx:id="editTourStart" text="%AddTour_Start"
            GridPane.columnIndex="0"
            GridPane.rowIndex="2" />
-    <TextField fx:id="addTourStartTextField"
+    <TextField fx:id="editTourStartTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="2" />
-    <Label fx:id="addTourStartRequired" text="*"
+    <Label fx:id="editTourStartRequired" text="*"
            GridPane.columnIndex="2"
            GridPane.rowIndex="2"/>
 
-    <Label fx:id="addTourDestination" text="%AddTour_Destination"
+    <Label fx:id="editTourDestination" text="%AddTour_Destination"
            GridPane.columnIndex="0"
            GridPane.rowIndex="3" />
-    <TextField fx:id="addTourDestinationTextField"
+    <TextField fx:id="editTourDestinationTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="3" />
-    <Label fx:id="addTourDestinationRequired" text="*"
+    <Label fx:id="editTourDestinationRequired" text="*"
            GridPane.columnIndex="2"
            GridPane.rowIndex="3"/>
 
-    <Label fx:id="addTourTransportType" text="%AddTour_TransportType"
+    <Label fx:id="editTourTransportType" text="%AddTour_TransportType"
            GridPane.columnIndex="0"
            GridPane.rowIndex="4" />
-    <ChoiceBox fx:id="addTourTransportTypeChoiceBox"
+    <ChoiceBox fx:id="editTourTransportTypeChoiceBox"
                GridPane.columnIndex="1"
                GridPane.rowIndex="4"
                GridPane.columnSpan="2" />
-    <Label fx:id="addTourTransportTypeRequired" text="*"
+    <Label fx:id="editTourTransportTypeRequired" text="*"
            GridPane.columnIndex="2"
            GridPane.rowIndex="4"/>
 
-    <Label fx:id="addTourDescription" text="%AddTour_Description"
+    <Label fx:id="editTourDescription" text="%AddTour_Description"
            GridPane.columnIndex="0"
            GridPane.rowIndex="5"
            GridPane.columnSpan="2" />
-    <TextArea fx:id="addTourDescriptionTextArea"
-               GridPane.columnIndex="0"
-               GridPane.rowIndex="6"
-               GridPane.columnSpan="2" />
+    <TextArea fx:id="editTourDescriptionTextArea"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="6"
+              GridPane.columnSpan="2" />
     <Label fx:id="inputRequired" text="%Input_Required"
            GridPane.columnIndex="0"
            GridPane.rowIndex="7" />
     <HBox spacing="10" alignment="bottom_right"
           GridPane.columnIndex="1"
           GridPane.rowIndex="7">
-        <Button fx:id="addTourCancelButton" text="%Cancel" onAction="#onAddTourCancelButton"/>
-        <Button fx:id="addTourOKButton" text="%OK" onAction="#onAddTourOKButton"/>
+        <Button fx:id="editTourCancelButton" text="%Cancel" onAction="#onEditTourCancelButton"/>
+        <Button fx:id="editTourOKButton" text="%OK" onAction="#onEditTourOKButton"/>
     </HBox>
 
 
 
     <stylesheets>
-        <URL value="@css/AddTourStyle.css" />
+        <URL value="@../css/editTourStyle.css" />
     </stylesheets>
 </GridPane>

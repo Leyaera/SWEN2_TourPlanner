@@ -13,6 +13,6 @@
     <TextField fx:id="searchTextField" HBox.hgrow="ALWAYS"/>
     <Button fx:id="searchButton" onAction="#onSearchButton"/>
     <stylesheets>
-        <URL value="@css/searchBarStyle.css" />
+        <URL value="@../css/searchBarStyle.css" />
     </stylesheets>
 </HBox>

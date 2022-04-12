@@ -27,6 +27,6 @@
     <Text fx:id="tourDescriptionDescription"/>
 
     <stylesheets>
-        <URL value="@css/tourDetailsDescriptionStyle.css" />
+        <URL value="@../css/tourDetailsDescriptionStyle.css" />
     </stylesheets>
 </TextFlow>

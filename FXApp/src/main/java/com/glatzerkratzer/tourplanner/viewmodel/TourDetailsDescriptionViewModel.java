@@ -23,8 +23,9 @@ public class TourDetailsDescriptionViewModel {
     public ResourceBundle bundle;
     public Locale locale;
 
+
     public TourDetailsDescriptionViewModel() {
-        //name.addListener( (arg, oldVal, newVal)->updateTourModel());
+        
     }
 
     public String getName() { return name.get(); }

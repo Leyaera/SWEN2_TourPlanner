@@ -1,0 +1,20 @@
+#editTourHeader {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+
+#editTourName, #editTourStart, #editTourDestination, #editTourTransportType {
+    -fx-alignment: center-right;
+}
+
+Button {
+    -fx-pref-width: 100px;
+}
+
+.choice-box {
+    -fx-pref-width: 200px;
+}
+
+.choice-box .context-menu {
+    -fx-pref-width: 200px;
+}

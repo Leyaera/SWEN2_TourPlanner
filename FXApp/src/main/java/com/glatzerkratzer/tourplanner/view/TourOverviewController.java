@@ -1,7 +1,6 @@
 package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.FXMLDependencyInjection;
-import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
 import javafx.event.ActionEvent;
@@ -44,12 +43,6 @@ public class TourOverviewController {
 
     public void onButtonAdd(ActionEvent actionEvent) throws IOException {
         startSecondaryStage("AddTour.fxml");
-
-        /*
-        TourItem tourItem = new TourItem();
-        tourOverviewViewModel.addNewTour(tourItem);
-        tourItemList.getSelectionModel().selectLast();
-         */
     }
 
     public void onButtonRemove(ActionEvent actionEvent) {
@@ -79,8 +72,8 @@ public class TourOverviewController {
         }
     }
 
-    public void onButtonEdit(ActionEvent actionEvent) {
-        //tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
+    public void onButtonEdit(ActionEvent actionEvent) throws IOException {
+        startSecondaryStage("EditTour.fxml");
     }
 
     public void onButtonRefresh(ActionEvent actionEvent) {
@@ -100,7 +93,20 @@ public class TourOverviewController {
         }
 
         Stage secondaryStage = new Stage();
-        Parent root = FXMLDependencyInjection.load(location, locale );  // Locale.GERMAN, Locale.ENGLISH
+        FXMLDependencyInjection fxmlDependencyInjection = new FXMLDependencyInjection();
+        Parent root = fxmlDependencyInjection.load(location, locale );  // Locale.GERMAN, Locale.ENGLISH
+        FXMLLoader thisController = fxmlDependencyInjection.getSecondLoader();
+
+        /*
+        if(thisController == EditTourController.class) {
+
+            tourItemList.getSelectionModel().getSelectedItem() != null
+        }) {
+            thisController.initData
+        }
+         */
+         */
+
         Scene scene = new Scene(root);
         secondaryStage.setScene(scene);
         secondaryStage.setTitle(secondaryStageTitle);

@@ -14,17 +14,24 @@ import java.util.ResourceBundle;
  * based on https://edencoding.com/dependency-injection/
  */
 public class FXMLDependencyInjection {
+    private static FXMLLoader loader;
+
     public static Parent load(String location, Locale locale) throws IOException {
-        FXMLLoader loader = getLoader(location, locale);
+        loader = getLoader(location, locale);
         return loader.load();
     }
 
     public static FXMLLoader getLoader(String location, Locale locale) {
         return new FXMLLoader(
-                FXMLDependencyInjection.class.getResource("/com/glatzerkratzer/tourplanner/view/" + location),
+                FXMLDependencyInjection.class.getResource("/com/glatzerkratzer/tourplanner/view/fxml/" + location),
                 ResourceBundle.getBundle("com.glatzerkratzer.tourplanner.view." + "gui_strings", locale),
                 new JavaFXBuilderFactory(),
                 controllerClass-> ControllerFactory.getInstance().create(controllerClass, locale)
                 );
+    }
+
+    // for passing data to secondary stages
+    public FXMLLoader getSecondLoader() {
+        return this.loader;
     }
 }
