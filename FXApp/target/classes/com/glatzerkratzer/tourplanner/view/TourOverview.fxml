@@ -11,9 +11,10 @@
     <ToolBar>
         <Label text="%TourOverview_Items"/>
         <Pane HBox.hgrow="ALWAYS"/>
-        <Button fx:id="addButton" onAction="#onButtonAdd"/>
-        <Button fx:id="removeButton" onAction="#onButtonRemove"/>
-        <Button fx:id="editButton" onAction="#onButtonEdit"/>
+        <Button fx:id="addButton" onAction="#onButtonAdd" />
+        <Button fx:id="removeButton" onAction="#onButtonRemove" />
+        <Button fx:id="editButton" onAction="#onButtonEdit" />
+        <Button fx:id="refreshButton" onAction="#onButtonRefresh" />
     </ToolBar>
     <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS"/>
     <stylesheets>

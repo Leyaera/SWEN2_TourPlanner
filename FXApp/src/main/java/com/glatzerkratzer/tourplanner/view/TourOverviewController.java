@@ -83,6 +83,10 @@ public class TourOverviewController {
         //tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
     }
 
+    public void onButtonRefresh(ActionEvent actionEvent) {
+        tourOverviewViewModel.refreshToursList();
+    }
+
 
     public void startSecondaryStage(String location) throws IOException {
         String secondaryStageTitle = "";
@@ -105,6 +109,7 @@ public class TourOverviewController {
         tourOverviewViewModel.refreshToursList();
         tourItemList.setItems(tourOverviewViewModel.getObservableTours());
         tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
+        tourItemList.getSelectionModel().selectLast();
     }
 
 }

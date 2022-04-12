@@ -16,6 +16,10 @@
     -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/add.png');
 }
 
+#refreshButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/refresh.png');
+}
+
 /*
 Button {
     -fx-pref-height: 30px;
