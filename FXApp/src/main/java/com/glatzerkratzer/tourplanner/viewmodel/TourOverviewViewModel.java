@@ -53,7 +53,7 @@ public class TourOverviewViewModel {
         observableTourItems.addAll(tourItems);
     }
 
-    public void addNewTour() {
+    public void refreshToursList() {
         var tours = DAL.getInstance().tourDao().getLatestEntries();
         observableTourItems.addAll(tours);
     }

@@ -102,7 +102,7 @@ public class TourOverviewController {
         secondaryStage.setTitle(secondaryStageTitle);
         secondaryStage.showAndWait();
 
-        tourOverviewViewModel.addNewTour();
+        tourOverviewViewModel.refreshToursList();
         tourItemList.setItems(tourOverviewViewModel.getObservableTours());
         tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
     }
