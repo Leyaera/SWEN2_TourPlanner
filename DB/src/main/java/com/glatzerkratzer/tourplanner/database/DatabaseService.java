@@ -39,7 +39,6 @@ public class DatabaseService implements DatabaseServiceInterface {
     @Override
     public Connection getConnection() {
         try {
-
             return DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
             e.printStackTrace();

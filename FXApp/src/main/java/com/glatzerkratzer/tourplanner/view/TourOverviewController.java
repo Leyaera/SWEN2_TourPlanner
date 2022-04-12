@@ -1,6 +1,7 @@
 package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.FXMLDependencyInjection;
+import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
 import javafx.event.ActionEvent;
@@ -99,7 +100,11 @@ public class TourOverviewController {
         Scene scene = new Scene(root);
         secondaryStage.setScene(scene);
         secondaryStage.setTitle(secondaryStageTitle);
-        secondaryStage.show();
+        secondaryStage.showAndWait();
 
+        tourOverviewViewModel.addNewTour();
+        tourItemList.setItems(tourOverviewViewModel.getObservableTours());
+        tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
     }
+
 }

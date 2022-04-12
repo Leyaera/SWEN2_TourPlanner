@@ -1,5 +1,7 @@
 package com.glatzerkratzer.tourplanner.dal;
 
+import com.glatzerkratzer.tourplanner.model.TourItem;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +16,8 @@ public interface Dao<T> {
     Optional<T> get(int id);
 
     List<T> getAll();
+
+    List<TourItem> getLatestEntries();
 
     T create();
 

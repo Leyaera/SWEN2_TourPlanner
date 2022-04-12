@@ -49,6 +49,45 @@ public class TourItemDao implements Dao<TourItem> {
     }
 
     @Override
+    public List<TourItem> getLatestEntries() {
+        /* get id from last Entry in current tourItemlist
+         * gets data base entry with id greater than said id
+         * returns found tourItems as list.
+         */
+
+        List<TourItem> latestTourItems = new ArrayList<>();
+        TourItem lastTourItemInCurrentList = tourItems.get(tourItems.size()-1);
+        int lastTourId = lastTourItemInCurrentList.getId();
+        try {
+            Connection connection = DatabaseService.getDatabaseService().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, name, description, start, destination, transportType FROM tours WHERE id > ?");
+            preparedStatement.setInt(1, lastTourId);
+            //Statement statement = connection.createStatement();
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                TourItem newTourItem = new TourItem(
+                        resultSet.getInt(1),                                // id
+                        resultSet.getString(2),                             // name
+                        resultSet.getString(3),                             // description
+                        resultSet.getString(4),                             // start
+                        resultSet.getString(5),                             // destination
+                        TransportType.valueOf(resultSet.getString(6)),      // transportType
+                        0.0,                                                   // distance
+                        0.0,                                                   // duration
+                        "mapPath"                                              // mapPath
+                );
+                tourItems.add(newTourItem);
+                latestTourItems.add(newTourItem);
+            }
+            return latestTourItems;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public TourItem create() {
         var tour = new TourItem("New Tour " +  nextId);
         nextId++;

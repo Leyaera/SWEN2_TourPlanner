@@ -1,5 +1,6 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
+import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import javafx.beans.value.ChangeListener;
@@ -52,10 +53,9 @@ public class TourOverviewViewModel {
         observableTourItems.addAll(tourItems);
     }
 
-    public void addNewTour(TourItem tourItem) {
-
-        //var tour = DAL.getInstance().tourDao().create();
-        //observableTourItems.add(tour);
+    public void addNewTour() {
+        var tours = DAL.getInstance().tourDao().getLatestEntries();
+        observableTourItems.addAll(tours);
     }
 
     public void deleteTour(TourItem tourItem) {
