@@ -52,9 +52,10 @@ public class TourOverviewViewModel {
         observableTourItems.addAll(tourItems);
     }
 
-    public void addNewTour() {
-        var tour = DAL.getInstance().tourDao().create();
-        observableTourItems.add(tour);
+    public void addNewTour(TourItem tourItem) {
+
+        //var tour = DAL.getInstance().tourDao().create();
+        //observableTourItems.add(tour);
     }
 
     public void deleteTour(TourItem tourItem) {

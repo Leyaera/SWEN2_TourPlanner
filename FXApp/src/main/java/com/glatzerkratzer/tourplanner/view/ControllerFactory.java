@@ -18,7 +18,7 @@ public class ControllerFactory {
         tourDetailsDescriptionViewModel = new TourDetailsDescriptionViewModel();
         tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel);
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourOverviewViewModel, tourDetailsViewModel);
-        addTourViewModel = new AddTourViewModel(tourDetailsViewModel);
+        addTourViewModel = new AddTourViewModel();
     }
 
     //
