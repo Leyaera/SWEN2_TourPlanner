@@ -12,7 +12,6 @@ import java.util.Locale;
 
 public class AddTourViewModel {
     public TourItem tourItem;
-    private volatile boolean isInitValue = false;
 
     public AddTourViewModel() {
         this.tourItem = new TourItem();

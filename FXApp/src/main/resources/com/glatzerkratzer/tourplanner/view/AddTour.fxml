@@ -19,7 +19,7 @@
     <Label fx:id="addTourHeader" text="%AddTour_Header"
           GridPane.columnIndex="0"
           GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+          GridPane.columnSpan="3"/>
 
     <Label fx:id="addTourName" text="%AddTour_Name"
            GridPane.columnIndex="0"
@@ -27,6 +27,9 @@
     <TextField fx:id="addTourNameTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="1" />
+    <Label fx:id="addTourNameRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="1"/>
 
     <Label fx:id="addTourStart" text="%AddTour_Start"
            GridPane.columnIndex="0"
@@ -34,6 +37,9 @@
     <TextField fx:id="addTourStartTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="2" />
+    <Label fx:id="addTourStartRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="2"/>
 
     <Label fx:id="addTourDestination" text="%AddTour_Destination"
            GridPane.columnIndex="0"
@@ -41,6 +47,9 @@
     <TextField fx:id="addTourDestinationTextField"
                GridPane.columnIndex="1"
                GridPane.rowIndex="3" />
+    <Label fx:id="addTourDestinationRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="3"/>
 
     <Label fx:id="addTourTransportType" text="%AddTour_TransportType"
            GridPane.columnIndex="0"
@@ -49,6 +58,9 @@
                GridPane.columnIndex="1"
                GridPane.rowIndex="4"
                GridPane.columnSpan="2" />
+    <Label fx:id="addTourTransportTypeRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="4"/>
 
     <Label fx:id="addTourDescription" text="%AddTour_Description"
            GridPane.columnIndex="0"
@@ -58,11 +70,12 @@
                GridPane.columnIndex="0"
                GridPane.rowIndex="6"
                GridPane.columnSpan="2" />
-
+    <Label fx:id="inputRequired" text="%Input_Required"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="7" />
     <HBox spacing="10" alignment="bottom_right"
           GridPane.columnIndex="1"
-          GridPane.rowIndex="7"
-          GridPane.columnSpan="2">
+          GridPane.rowIndex="7">
         <Button fx:id="addTourCancelButton" text="%Cancel" onAction="#onAddTourCancelButton"/>
         <Button fx:id="addTourOKButton" text="%OK" onAction="#onAddTourOKButton"/>
     </HBox>
