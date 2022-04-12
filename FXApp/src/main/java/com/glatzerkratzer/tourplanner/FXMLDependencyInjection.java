@@ -31,7 +31,5 @@ public class FXMLDependencyInjection {
     }
 
     // for passing data to secondary stages
-    public FXMLLoader getSecondLoader() {
-        return this.loader;
-    }
+    public <T> T getController() { return this.loader.getController(); }
 }

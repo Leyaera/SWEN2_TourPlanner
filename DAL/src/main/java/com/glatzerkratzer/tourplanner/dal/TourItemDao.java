@@ -31,7 +31,8 @@ public class TourItemDao implements Dao<TourItem> {
                         "mapPath"                                              // mapPath
                 ));
             }
-
+            statement.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,11 +81,34 @@ public class TourItemDao implements Dao<TourItem> {
                 tourItems.add(newTourItem);
                 latestTourItems.add(newTourItem);
             }
+            preparedStatement.close();
+            connection.close();
             return latestTourItems;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public int getTourItemIdByName(String name) {
+        int tourId = 0;
+        try {
+            Connection connection = DatabaseService.getDatabaseService().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id FROM tours WHERE name = ?");
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                tourId = resultSet.getInt(1);
+            }
+            preparedStatement.close();
+            connection.close();
+            return tourId;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
@@ -120,24 +144,17 @@ public class TourItemDao implements Dao<TourItem> {
     }
 
     @Override
-    public void update(TourItem tourItem, List<?> params) {
-        System.out.println(params);
-        tourItem.setName(Objects.requireNonNull(params.get(1), "Name cannot be null").toString());
-        tourItem.setDescription(Objects.requireNonNull(params.get(2), "Description cannot be null").toString());
-        tourItem.setStart(Objects.requireNonNull(params.get(3), "Start cannot be null").toString());
-        tourItem.setDestination(Objects.requireNonNull(params.get(4), "Destination cannot be null").toString());
-        tourItem.setTransportType(TransportType.valueOf(Objects.requireNonNull(params.get(5), "TransportType cannot be null").toString()));
-
+    public void update(int tourId, TourItem tourItem) {
         if (tourItem.getId() > 0) {
             try {
                 Connection connection = DatabaseService.getDatabaseService().getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET (name, description, start, destination, transporttype) VALUES (?, ?, ?, ?, ?) WHERE id = ?;");
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET (name, description, start, destination, transporttype) VALUES (?, ?, ?, ?, ?) WHERE id = ?");
                 preparedStatement.setString(1, tourItem.getName());
                 preparedStatement.setString(2, tourItem.getDescription());
                 preparedStatement.setString(3, tourItem.getStart());
                 preparedStatement.setString(4, tourItem.getDestination());
                 preparedStatement.setString(5, tourItem.getTransportType().toString());
-                preparedStatement.setInt(6, tourItem.getId());
+                preparedStatement.setInt(6, tourId);
 
                 int affectedRows = preparedStatement.executeUpdate();
                 preparedStatement.close();

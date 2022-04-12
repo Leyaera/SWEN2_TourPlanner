@@ -95,17 +95,15 @@ public class TourOverviewController {
         Stage secondaryStage = new Stage();
         FXMLDependencyInjection fxmlDependencyInjection = new FXMLDependencyInjection();
         Parent root = fxmlDependencyInjection.load(location, locale );  // Locale.GERMAN, Locale.ENGLISH
-        FXMLLoader thisController = fxmlDependencyInjection.getSecondLoader();
 
-        /*
-        if(thisController == EditTourController.class) {
+        if (location.equals("EditTour.fxml")) {
+            EditTourController editTourController = fxmlDependencyInjection.getController();
 
-            tourItemList.getSelectionModel().getSelectedItem() != null
-        }) {
-            thisController.initData
+            TourItem selectedTour = tourItemList.getSelectionModel().getSelectedItem();
+            if (selectedTour != null) {
+                editTourController.initData(selectedTour);
+            }
         }
-         */
-         */
 
         Scene scene = new Scene(root);
         secondaryStage.setScene(scene);

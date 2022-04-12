@@ -18,6 +18,15 @@ public class EditTourViewModel {
         this.tourItem = new TourItem();
     }
 
+    public void updateTour(String currentName) {
+        //DEBUG
+        System.out.println("EditTourViewModel > updateTour");
+        System.out.println("currentName: " + currentName);
+        System.out.println("tourID of currentName: " + DAL.getInstance().tourDao().getTourItemIdByName(currentName));
+        System.out.println("newName: " + tourItem.getName());
+        DAL.getInstance().tourDao().update(DAL.getInstance().tourDao().getTourItemIdByName(currentName), tourItem);
+    }
+
 
     public ObservableList<String> getChoiceBoxItems(Locale locale) {
         String hike = "";
@@ -65,5 +74,45 @@ public class EditTourViewModel {
         }
 
         return transportType;
+    }
+
+    public String getChoiceBoxValueByTransportType(TransportType transportType, Locale locale) {
+        if (transportType.toString().equals("HIKE")) {
+            if (locale.toString().equals("de")) {
+                return "Wanderweg";
+            }
+            if (locale.toString().equals("en")) {
+                return "Hike";
+            }
+        }
+
+        if (transportType.toString().equals("BIKE")) {
+            if (locale.toString().equals("de")) {
+                return "Radweg";
+            }
+            if (locale.toString().equals("en")) {
+                return "Bike";
+            }
+        }
+
+        if (transportType.toString().equals("RUNNING")) {
+            if (locale.toString().equals("de")) {
+                return "Laufweg";
+            }
+            if (locale.toString().equals("en")) {
+                return "Running";
+            }
+        }
+
+        if (transportType.toString().equals("VACATION")) {
+            if (locale.toString().equals("de")) {
+                return "Urlaubstour";
+            }
+            if (locale.toString().equals("en")) {
+                return "Vacation";
+            }
+        }
+
+        return null;
     }
 }

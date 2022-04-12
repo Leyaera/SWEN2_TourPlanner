@@ -62,8 +62,8 @@ public class TourDetailsViewModel {
     }
 
     private void updateTourModel() {
-        if( !isInitValue )
-            DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), this.tourDetailsDescriptionViewModel.getName(), this.tourDetailsDescriptionViewModel.getDescription(), this.tourDetailsDescriptionViewModel.getStart(), this.tourDetailsDescriptionViewModel.getDestination(), this.tourDetailsDescriptionViewModel.getTransportType()));
+        //if( !isInitValue )
+            //DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), this.tourDetailsDescriptionViewModel.getName(), this.tourDetailsDescriptionViewModel.getDescription(), this.tourDetailsDescriptionViewModel.getStart(), this.tourDetailsDescriptionViewModel.getDestination(), this.tourDetailsDescriptionViewModel.getTransportType()));
     }
 
 

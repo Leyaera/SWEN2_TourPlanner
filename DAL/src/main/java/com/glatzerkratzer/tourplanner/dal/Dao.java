@@ -19,11 +19,13 @@ public interface Dao<T> {
 
     List<TourItem> getLatestEntries();
 
+    int getTourItemIdByName(String name);
+
     T create();
 
     void add(T t);
 
-    void update(T t, List<?> params);
+    void update(int tourId, T t);
 
     void delete(T t);
 }

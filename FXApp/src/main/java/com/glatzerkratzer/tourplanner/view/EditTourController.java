@@ -28,6 +28,8 @@ public class EditTourController {
     private final EditTourViewModel editTourViewModel;
     private Locale locale;
 
+    private TourItem tourItem;
+
     public EditTourController(EditTourViewModel editTourViewModel, Locale locale) {
         this.locale = locale;
         this.editTourViewModel = editTourViewModel;
@@ -39,10 +41,11 @@ public class EditTourController {
     }
 
     void initData(TourItem tourItem) {
+        this.tourItem = tourItem;
         this.editTourNameTextField.setText(tourItem.getName());
         this.editTourStartTextField.setText(tourItem.getStart());
         this.editTourDestinationTextField.setText(tourItem.getDestination());
-        this.editTourTransportTypeChoiceBox.setValue(tourItem.getTransportType().toString());
+        this.editTourTransportTypeChoiceBox.setValue(editTourViewModel.getChoiceBoxValueByTransportType(tourItem.getTransportType(), locale));
         this.editTourDescriptionTextArea.setText(tourItem.getDescription());
     }
 
@@ -53,20 +56,21 @@ public class EditTourController {
             return;
         }
 
-        /*
-        editTourViewModel.tourItem.setName(addTourNameTextField.getText());
-        editTourViewModel.tourItem.setStart(addTourStartTextField.getText());
-        editTourViewModel.tourItem.setDestination(addTourDestinationTextField.getText());
-        editTourViewModel.tourItem.setDescription(addTourDescriptionTextArea.getText());
-        editTourViewModel.tourItem.setTransportType(editTourViewModel.getTransportTypeByChoiceBoxValue(addTourTransportTypeChoiceBox.getValue()));
+        String currentTourName = tourItem.getName();
+
+        editTourViewModel.tourItem = this.tourItem;
+        editTourViewModel.tourItem.setName(editTourNameTextField.getText());
+        editTourViewModel.tourItem.setStart(editTourStartTextField.getText());
+        editTourViewModel.tourItem.setDestination(editTourDestinationTextField.getText());
+        editTourViewModel.tourItem.setDescription(editTourDescriptionTextArea.getText());
+        editTourViewModel.tourItem.setTransportType(editTourViewModel.getTransportTypeByChoiceBoxValue(editTourTransportTypeChoiceBox.getValue()));
 
         // add to database
-        editTourViewModel.addTour();
+        editTourViewModel.updateTour(currentTourName);
         // close window
         Stage secondaryStage = (Stage)((Node) event.getSource()).getScene().getWindow();
         secondaryStage.close();
 
-         */
     }
 
     public void onEditTourCancelButton(ActionEvent event) {
