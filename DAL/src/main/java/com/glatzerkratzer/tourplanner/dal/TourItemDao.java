@@ -57,8 +57,12 @@ public class TourItemDao implements Dao<TourItem> {
          */
 
         List<TourItem> latestTourItems = new ArrayList<>();
-        TourItem lastTourItemInCurrentList = tourItems.get(tourItems.size()-1);
-        int lastTourId = lastTourItemInCurrentList.getId();
+        int lastTourId = 0;
+        if (!tourItems.isEmpty()) {
+            TourItem lastTourItemInCurrentList = tourItems.get(tourItems.size()-1);
+            lastTourId = lastTourItemInCurrentList.getId();
+        }
+        
         try {
             Connection connection = DatabaseService.getDatabaseService().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, name, description, start, destination, transportType FROM tours WHERE id > ?");

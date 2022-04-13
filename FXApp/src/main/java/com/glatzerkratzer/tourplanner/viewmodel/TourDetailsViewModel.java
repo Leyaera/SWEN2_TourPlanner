@@ -33,26 +33,20 @@ public class TourDetailsViewModel {
         if( tourItemModel == null ) {
             // select the first in the list
             this.tourDetailsDescriptionViewModel.setName("");
-            this.tourDetailsDescriptionViewModel.setTourDescriptionDescriptionTag();
             this.tourDetailsDescriptionViewModel.setDescription("");
-            this.tourDetailsDescriptionViewModel.setTourDescriptionStartTag();
             this.tourDetailsDescriptionViewModel.setStart("");
-            this.tourDetailsDescriptionViewModel.setTourDescriptionDestinationTag();
             this.tourDetailsDescriptionViewModel.setDestination("");
             this.tourDetailsDescriptionViewModel.setTransportType("");
-            this.tourDetailsDescriptionViewModel.setDistance(0.0);
-            this.tourDetailsDescriptionViewModel.setDuration(0.0);
+            this.tourDetailsDescriptionViewModel.setDistance(-1.0);
+            this.tourDetailsDescriptionViewModel.setDuration(-1.0);
             mapPath.set("");
             return;
         }
 
         this.tourItemModel = tourItemModel;
         this.tourDetailsDescriptionViewModel.setName( tourItemModel.getName() );
-        this.tourDetailsDescriptionViewModel.setTourDescriptionDescriptionTag();
         this.tourDetailsDescriptionViewModel.setDescription( tourItemModel.getDescription() );
-        this.tourDetailsDescriptionViewModel.setTourDescriptionStartTag();
         this.tourDetailsDescriptionViewModel.setStart( tourItemModel.getStart() );
-        this.tourDetailsDescriptionViewModel.setTourDescriptionDestinationTag();
         this.tourDetailsDescriptionViewModel.setDestination( tourItemModel.getDestination() );
         this.tourDetailsDescriptionViewModel.setTransportType( tourItemModel.getTransportType().toString() );
         this.tourDetailsDescriptionViewModel.setDistance( tourItemModel.getDistance() );
