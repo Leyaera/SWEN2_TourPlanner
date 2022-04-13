@@ -148,11 +148,11 @@ public class TourItemDao implements Dao<TourItem> {
     }
 
     @Override
-    public void update(int tourId, TourItem tourItem) {
+    public void updateById(int tourId, TourItem tourItem) {
         if (tourItem.getId() > 0) {
             try {
                 Connection connection = DatabaseService.getDatabaseService().getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET (name, description, start, destination, transporttype) VALUES (?, ?, ?, ?, ?) WHERE id = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET name = ?, description = ?, start = ?, destination = ?, transporttype = ? WHERE id = ?");
                 preparedStatement.setString(1, tourItem.getName());
                 preparedStatement.setString(2, tourItem.getDescription());
                 preparedStatement.setString(3, tourItem.getStart());
@@ -160,13 +160,41 @@ public class TourItemDao implements Dao<TourItem> {
                 preparedStatement.setString(5, tourItem.getTransportType().toString());
                 preparedStatement.setInt(6, tourId);
 
-                int affectedRows = preparedStatement.executeUpdate();
+                preparedStatement.executeUpdate();
                 preparedStatement.close();
                 connection.close();
 
-                if (affectedRows == 0) {
-                    System.out.println("affected Rows in update = 0");
-                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        // If Tour(ID) does not already exist --> add new Tour
+        add(tourItem);
+    }
+
+    @Override
+    public void updateByName(String nameBeforeUpdate, TourItem tourItem) {
+        if (!nameBeforeUpdate.isBlank()) {
+            try {
+                // DEBUG
+                System.out.println("DEBUG in update in TourItemDao");
+                System.out.println("TourName: " + tourItem.getName());
+                System.out.println("TourDescription: " + tourItem.getDescription());
+                System.out.println("TourNameBeforeUpdate: " + nameBeforeUpdate);
+
+                Connection connection = DatabaseService.getDatabaseService().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET name = ?, description = ?, start = ?, destination = ?, transporttype = ? WHERE name = ?");
+                preparedStatement.setString(1, tourItem.getName());
+                preparedStatement.setString(2, tourItem.getDescription());
+                preparedStatement.setString(3, tourItem.getStart());
+                preparedStatement.setString(4, tourItem.getDestination());
+                preparedStatement.setString(5, tourItem.getTransportType().toString());
+                preparedStatement.setString(6, nameBeforeUpdate);
+
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+                connection.close();
 
             } catch (SQLException e) {
                 e.printStackTrace();

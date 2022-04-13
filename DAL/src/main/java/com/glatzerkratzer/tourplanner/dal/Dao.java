@@ -25,7 +25,9 @@ public interface Dao<T> {
 
     void add(T t);
 
-    void update(int tourId, T t);
+    void updateById(int tourId, T t);
+
+    void updateByName(String nameBeforeUpdate, T t);
 
     void delete(T t);
 }

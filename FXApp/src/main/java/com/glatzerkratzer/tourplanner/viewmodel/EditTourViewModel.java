@@ -24,7 +24,7 @@ public class EditTourViewModel {
         System.out.println("currentName: " + currentName);
         System.out.println("tourID of currentName: " + DAL.getInstance().tourDao().getTourItemIdByName(currentName));
         System.out.println("newName: " + tourItem.getName());
-        DAL.getInstance().tourDao().update(DAL.getInstance().tourDao().getTourItemIdByName(currentName), tourItem);
+        DAL.getInstance().tourDao().updateById(DAL.getInstance().tourDao().getTourItemIdByName(currentName), tourItem);
     }
 
 
