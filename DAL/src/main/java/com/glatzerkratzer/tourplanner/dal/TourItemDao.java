@@ -9,14 +9,17 @@ import java.sql.*;
 import java.util.*;
 
 public class TourItemDao implements Dao<TourItem> {
-    private List<TourItem> tourItems = new ArrayList<>();
-    private int nextId = 1;
 
-    public TourItemDao() {
+
+    public TourItemDao() {}
+
+    @Override
+    public List<TourItem> getAll() {
+        List<TourItem> tourItems = new ArrayList<>();
         try {
             Connection connection = DatabaseService.getDatabaseService().getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id, name, description, start, destination, transportType FROM tours;");
+            ResultSet resultSet = statement.executeQuery("SELECT id, name, description, start, destination, transportType FROM tours ORDER BY id;");
 
             while(resultSet.next()) {
                 tourItems.add(new TourItem(
@@ -36,40 +39,25 @@ public class TourItemDao implements Dao<TourItem> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-
-    @Override
-    public Optional<TourItem> get(int id) {
-        return Optional.ofNullable(tourItems.get(id));
-    }
-
-    @Override
-    public List<TourItem> getAll() {
         return tourItems;
     }
 
     @Override
-    public List<TourItem> getLatestEntries() {
+    public List<TourItem> getLatestEntries(int lastTourIdInCurrentList) {
         /* get id from last Entry in current tourItemlist
          * gets data base entry with id greater than said id
          * returns found tourItems as list.
          */
 
-        List<TourItem> latestTourItems = new ArrayList<>();
-        int lastTourId = 0;
-        if (!tourItems.isEmpty()) {
-            TourItem lastTourItemInCurrentList = tourItems.get(tourItems.size()-1);
-            lastTourId = lastTourItemInCurrentList.getId();
-        }
-        
         try {
+
             Connection connection = DatabaseService.getDatabaseService().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, name, description, start, destination, transportType FROM tours WHERE id > ?");
-            preparedStatement.setInt(1, lastTourId);
+            preparedStatement.setInt(1, lastTourIdInCurrentList);
             //Statement statement = connection.createStatement();
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            List<TourItem> latestTourItems = new ArrayList<>();
             while(resultSet.next()) {
                 TourItem newTourItem = new TourItem(
                         resultSet.getInt(1),                                // id
@@ -82,7 +70,6 @@ public class TourItemDao implements Dao<TourItem> {
                         0.0,                                                   // duration
                         "mapPath"                                              // mapPath
                 );
-                tourItems.add(newTourItem);
                 latestTourItems.add(newTourItem);
             }
             preparedStatement.close();
@@ -113,14 +100,6 @@ public class TourItemDao implements Dao<TourItem> {
             e.printStackTrace();
         }
         return 0;
-    }
-
-    @Override
-    public TourItem create() {
-        var tour = new TourItem("New Tour " +  nextId);
-        nextId++;
-        tourItems.add(tour);
-        return tour;
     }
 
     @Override
@@ -169,20 +148,12 @@ public class TourItemDao implements Dao<TourItem> {
             }
             return;
         }
-        // If Tour(ID) does not already exist --> add new Tour
-        add(tourItem);
     }
 
     @Override
     public void updateByName(String nameBeforeUpdate, TourItem tourItem) {
         if (!nameBeforeUpdate.isBlank()) {
             try {
-                // DEBUG
-                System.out.println("DEBUG in update in TourItemDao");
-                System.out.println("TourName: " + tourItem.getName());
-                System.out.println("TourDescription: " + tourItem.getDescription());
-                System.out.println("TourNameBeforeUpdate: " + nameBeforeUpdate);
-
                 Connection connection = DatabaseService.getDatabaseService().getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET name = ?, description = ?, start = ?, destination = ?, transporttype = ? WHERE name = ?");
                 preparedStatement.setString(1, tourItem.getName());
@@ -221,6 +192,5 @@ public class TourItemDao implements Dao<TourItem> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        tourItems.remove(tourItem);
     }
 }

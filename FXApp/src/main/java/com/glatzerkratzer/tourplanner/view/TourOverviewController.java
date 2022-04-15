@@ -5,7 +5,6 @@ import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -40,10 +39,7 @@ public class TourOverviewController {
         tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
     }
 
-
-    public void onButtonAdd(ActionEvent actionEvent) throws IOException {
-        startSecondaryStage("AddTour.fxml");
-    }
+    public void onButtonAdd(ActionEvent actionEvent) throws IOException { startSecondaryStage("AddTour.fxml"); }
 
     public void onButtonRemove(ActionEvent actionEvent) {
         String AlertBox_Title = "";
@@ -73,13 +69,34 @@ public class TourOverviewController {
     }
 
     public void onButtonEdit(ActionEvent actionEvent) throws IOException {
-        startSecondaryStage("EditTour.fxml");
-    }
+        if (tourItemList.getSelectionModel().getSelectedItem() == null) {
+            String AlertBox_Title = "";
+            String AlertBox_ContentText ="";
+            String AlertBox_HeaderText = "";
+
+            if (locale.toString().equals("en")) {
+                AlertBox_Title = "Edit Tour";
+                AlertBox_ContentText = "No tour has been selected to edit.";
+                AlertBox_HeaderText = "Warning";
+            }
+
+            if (locale.toString().equals("de")) {
+                AlertBox_Title = "Tour bearbeiten";
+                AlertBox_ContentText = "Zum Bearbeiten bitte erst Tour auswählen.";
+                AlertBox_HeaderText = "Warnung";
+            }
+
+            Alert confirmationBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+            confirmationBox.setHeaderText(AlertBox_HeaderText);
+            confirmationBox.setTitle(AlertBox_Title);
+            confirmationBox.showAndWait();
+            return;
+        }
+        startSecondaryStage("EditTour.fxml"); }
 
     public void onButtonRefresh(ActionEvent actionEvent) {
         tourOverviewViewModel.refreshToursList();
     }
-
 
     public void startSecondaryStage(String location) throws IOException {
         String secondaryStageTitle = "";
@@ -96,13 +113,11 @@ public class TourOverviewController {
         FXMLDependencyInjection fxmlDependencyInjection = new FXMLDependencyInjection();
         Parent root = fxmlDependencyInjection.load(location, locale );  // Locale.GERMAN, Locale.ENGLISH
 
+        TourItem selectedTour = null;
         if (location.equals("EditTour.fxml")) {
             EditTourController editTourController = fxmlDependencyInjection.getController();
-
-            TourItem selectedTour = tourItemList.getSelectionModel().getSelectedItem();
-            if (selectedTour != null) {
-                editTourController.initData(selectedTour);
-            }
+            selectedTour = tourItemList.getSelectionModel().getSelectedItem();
+            if (selectedTour != null) { editTourController.initData(selectedTour); }
         }
 
         Scene scene = new Scene(root);

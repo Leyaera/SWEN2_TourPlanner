@@ -3,8 +3,6 @@ package com.glatzerkratzer.tourplanner.viewmodel;
 import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -19,11 +17,6 @@ public class EditTourViewModel {
     }
 
     public void updateTour(String currentName) {
-        //DEBUG
-        System.out.println("EditTourViewModel > updateTour");
-        System.out.println("currentName: " + currentName);
-        System.out.println("tourID of currentName: " + DAL.getInstance().tourDao().getTourItemIdByName(currentName));
-        System.out.println("newName: " + tourItem.getName());
         DAL.getInstance().tourDao().updateById(DAL.getInstance().tourDao().getTourItemIdByName(currentName), tourItem);
     }
 
@@ -50,7 +43,6 @@ public class EditTourViewModel {
 
         ObservableList<String> observableTransportTypeList = FXCollections.observableArrayList();
         observableTransportTypeList.addAll(hike, bike, running, vacation);
-
         return observableTransportTypeList;
     }
 
@@ -72,47 +64,29 @@ public class EditTourViewModel {
         if (choiceBoxValue.equals("Vacation") || choiceBoxValue.equals("Urlaubstour")) {
             transportType = TransportType.VACATION;
         }
-
         return transportType;
     }
 
     public String getChoiceBoxValueByTransportType(TransportType transportType, Locale locale) {
         if (transportType.toString().equals("HIKE")) {
-            if (locale.toString().equals("de")) {
-                return "Wanderweg";
-            }
-            if (locale.toString().equals("en")) {
-                return "Hike";
-            }
+            if (locale.toString().equals("de")) { return "Wanderweg"; }
+            if (locale.toString().equals("en")) { return "Hike"; }
         }
 
         if (transportType.toString().equals("BIKE")) {
-            if (locale.toString().equals("de")) {
-                return "Radweg";
-            }
-            if (locale.toString().equals("en")) {
-                return "Bike";
-            }
+            if (locale.toString().equals("de")) { return "Radweg"; }
+            if (locale.toString().equals("en")) { return "Bike"; }
         }
 
         if (transportType.toString().equals("RUNNING")) {
-            if (locale.toString().equals("de")) {
-                return "Laufweg";
-            }
-            if (locale.toString().equals("en")) {
-                return "Running";
-            }
+            if (locale.toString().equals("de")) { return "Laufweg"; }
+            if (locale.toString().equals("en")) { return "Running"; }
         }
 
         if (transportType.toString().equals("VACATION")) {
-            if (locale.toString().equals("de")) {
-                return "Urlaubstour";
-            }
-            if (locale.toString().equals("en")) {
-                return "Vacation";
-            }
+            if (locale.toString().equals("de")) { return "Urlaubstour"; }
+            if (locale.toString().equals("en")) { return "Vacation"; }
         }
-
         return null;
     }
 }

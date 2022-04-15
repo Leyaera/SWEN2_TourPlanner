@@ -13,15 +13,11 @@ import java.util.Optional;
  */
 public interface Dao<T> {
 
-    Optional<T> get(int id);
-
     List<T> getAll();
 
-    List<TourItem> getLatestEntries();
+    List<TourItem> getLatestEntries(int lastTourIdInCurrentList);
 
     int getTourItemIdByName(String name);
-
-    T create();
 
     void add(T t);
 
