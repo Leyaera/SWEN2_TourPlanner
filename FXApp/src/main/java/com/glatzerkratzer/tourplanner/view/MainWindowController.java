@@ -101,24 +101,4 @@ public class MainWindowController {
         mainViewModel.importFile(file);
         tourOverviewController.getTourOverviewViewModel().refreshToursList();
     }
-
-    /*
-    public Stage createSecondaryStage(String location) throws IOException {
-        String secondaryStageTitle = "";
-        if (location.equals("ImportTour.fxml")) {
-            if (locale.toString().equals("en")) { secondaryStageTitle = "Import tour"; }
-            if (locale.toString().equals("de")) { secondaryStageTitle = "Tour importieren"; }
-        }
-
-        Stage secondaryStage = new Stage();
-        FXMLDependencyInjection fxmlDependencyInjection = new FXMLDependencyInjection();
-        Parent root = fxmlDependencyInjection.load(location, locale );  // Locale.GERMAN, Locale.ENGLISH
-
-        Scene scene = new Scene(root);
-        secondaryStage.setScene(scene);
-        secondaryStage.setTitle(secondaryStageTitle);
-        return secondaryStage;
-        //secondaryStage.showAndWait();
-    }
-     */
 }
