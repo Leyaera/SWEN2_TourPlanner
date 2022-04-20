@@ -20,6 +20,12 @@ public class EditTourViewModel {
         DAL.getInstance().tourDao().updateById(DAL.getInstance().tourDao().getTourItemIdByName(currentName), tourItem);
     }
 
+    public boolean tourExists() {
+        if (DAL.getInstance().tourDao().getTourItemIdByName(tourItem.getName()) > 0) {
+            return true;
+        }
+        return false;
+    }
 
     public ObservableList<String> getChoiceBoxItems(Locale locale) {
         String hike = "";

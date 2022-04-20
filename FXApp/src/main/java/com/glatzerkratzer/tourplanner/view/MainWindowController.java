@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class MainWindowController {
@@ -98,7 +100,32 @@ public class MainWindowController {
             return;
         }
 
-        mainViewModel.importFile(file);
+        List<TourItem> existingTourItems = mainViewModel.importFile(file);
+        if (existingTourItems != null) {
+            showTourExistsWarning(existingTourItems.get(0).getName());
+        }
         tourOverviewController.getTourOverviewViewModel().refreshToursList();
+    }
+
+    public void showTourExistsWarning(String existingTourItemName) {
+        String AlertBox_Title = "";
+        String AlertBox_ContentText ="";
+        String AlertBox_HeaderText = "";
+
+        if (locale.toString().equals("en")) {
+            AlertBox_Title = "Add tour failed";
+            AlertBox_HeaderText = "Warning";
+            AlertBox_ContentText = "Adding tour failed. Tour name \"" + existingTourItemName + "\" already exists.";
+        }
+
+        if (locale.toString().equals("de")) {
+            AlertBox_Title = "Tour hinzufügen Fehler";
+            AlertBox_HeaderText = "Warnung";
+            AlertBox_ContentText = "Tour wurde nicht hinzugefügt. Tour name \"" + existingTourItemName + "\" existiert bereits.";
+        }
+        Alert warningBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+        warningBox.setTitle(AlertBox_Title);
+        warningBox.setHeaderText(AlertBox_HeaderText);
+        warningBox.showAndWait();
     }
 }

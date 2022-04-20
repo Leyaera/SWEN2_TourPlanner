@@ -21,6 +21,13 @@ public class AddTourViewModel {
         DAL.getInstance().tourDao().add(tourItem);
     }
 
+    public boolean tourExists() {
+        if (DAL.getInstance().tourDao().getTourItemIdByName(tourItem.getName()) > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public ObservableList<String> getChoiceBoxItems(Locale locale) {
         String hike = "";
         String bike = "";

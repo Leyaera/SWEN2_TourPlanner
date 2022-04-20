@@ -27,6 +27,7 @@ public class EditTourController {
 
     private final EditTourViewModel editTourViewModel;
     private Locale locale;
+    private String currentTourName;
 
     private TourItem tourItem;
 
@@ -47,6 +48,7 @@ public class EditTourController {
         this.editTourDestinationTextField.setText(tourItem.getDestination());
         this.editTourTransportTypeChoiceBox.setValue(editTourViewModel.getChoiceBoxValueByTransportType(tourItem.getTransportType(), locale));
         this.editTourDescriptionTextArea.setText(tourItem.getDescription());
+        this.currentTourName = tourItem.getName();
     }
 
     public void onEditTourOKButton(ActionEvent event) {
@@ -56,14 +58,17 @@ public class EditTourController {
             return;
         }
 
-        String currentTourName = tourItem.getName();
-
         editTourViewModel.tourItem = this.tourItem;
         editTourViewModel.tourItem.setName(editTourNameTextField.getText());
         editTourViewModel.tourItem.setStart(editTourStartTextField.getText());
         editTourViewModel.tourItem.setDestination(editTourDestinationTextField.getText());
         editTourViewModel.tourItem.setDescription(editTourDescriptionTextArea.getText());
         editTourViewModel.tourItem.setTransportType(editTourViewModel.getTransportTypeByChoiceBoxValue(editTourTransportTypeChoiceBox.getValue()));
+
+        if (!editTourViewModel.tourItem.getName().equals(currentTourName) && editTourViewModel.tourExists()) {
+            showTourExistsWarning();
+            return;
+        }
 
         // add to database
         editTourViewModel.updateTour(currentTourName);
@@ -82,7 +87,6 @@ public class EditTourController {
         String AlertBox_Title = "";
         String AlertBox_ContentText ="";
 
-        System.out.println("locale = " + locale);
         if (locale.toString().equals("en")) {
             AlertBox_Title = "Input required";
             AlertBox_ContentText = "Please fill in all required fields!";
@@ -95,6 +99,28 @@ public class EditTourController {
         Alert aboutBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
         aboutBox.setTitle(AlertBox_Title);
         aboutBox.showAndWait();
+    }
+
+    public void showTourExistsWarning() {
+        String AlertBox_Title = "";
+        String AlertBox_ContentText ="";
+        String AlertBox_HeaderText = "";
+
+        if (locale.toString().equals("en")) {
+            AlertBox_Title = "Add tour failed";
+            AlertBox_HeaderText = "Warning";
+            AlertBox_ContentText = "Adding tour failed. Tour name already exists.";
+        }
+
+        if (locale.toString().equals("de")) {
+            AlertBox_Title = "Tour hinzufügen Fehler";
+            AlertBox_HeaderText = "Warnung";
+            AlertBox_ContentText = "Tour wurde nicht hinzugefügt. Tour name existiert bereits.";
+        }
+        Alert warningBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+        warningBox.setTitle(AlertBox_Title);
+        warningBox.setHeaderText(AlertBox_HeaderText);
+        warningBox.showAndWait();
     }
 
     public boolean isInputValid() {
