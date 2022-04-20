@@ -11,11 +11,35 @@
     <ToolBar>
         <Label text="%TourOverview_Items"/>
         <Pane HBox.hgrow="ALWAYS"/>
-        <Button fx:id="addButton" onAction="#onButtonAdd" />
-        <Button fx:id="removeButton" onAction="#onButtonRemove" />
-        <Button fx:id="editButton" onAction="#onButtonEdit" />
-        <Button fx:id="duplicateButton" onAction="#onButtonDuplicate" />
-        <Button fx:id="refreshButton" onAction="#onButtonRefresh" />
+        <Button fx:id="addButton" onAction="#onButtonAdd">
+            <tooltip>
+                <Tooltip text="%TourOverview_TooltipAddButton"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="removeButton" onAction="#onButtonRemove">
+            <tooltip>
+                <Tooltip text="%TourOverview_TooltipRemoveButton"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="editButton" onAction="#onButtonEdit">
+            <tooltip>
+                <Tooltip text="%TourOverview_TooltipEditButton"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="duplicateButton" onAction="#onButtonDuplicate">
+            <tooltip>
+                <Tooltip text="%TourOverview_TooltipDuplicateButton"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="refreshButton" onAction="#onButtonRefresh">
+            <tooltip>
+                <Tooltip text="%TourOverview_TooltipRefreshButton"/>
+            </tooltip>
+        </Button>
     </ToolBar>
     <fx:include fx:id="searchBar" source="SearchBar.fxml"/>
     <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS"/>
