@@ -13,7 +13,8 @@
             <MenuItem text="%Menu_File_Quit" onAction="#onMenuFileQuitClicked"/>
         </Menu>
         <Menu text="%Menu_Edit">
-            <MenuItem text="%Menu_Edit_Duplicate"/>
+            <MenuItem text="%Menu_Edit_Edit" onAction="#onMenuEditEditClicked"/>
+            <MenuItem text="%Menu_Edit_Duplicate" onAction="#onMenuEditDuplicateClicked"/>
         </Menu>
         <Menu text="%Menu_Options">
             <MenuItem mnemonicParsing="false" text="%Menu_Options_Settings"/>

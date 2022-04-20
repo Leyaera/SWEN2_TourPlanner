@@ -4,6 +4,10 @@
 }
  */
 
+#duplicateButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/copy.png');
+}
+
 #editButton {
     -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/edit.png');
 }

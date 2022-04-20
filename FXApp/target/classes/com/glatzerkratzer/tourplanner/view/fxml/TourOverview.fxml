@@ -14,6 +14,7 @@
         <Button fx:id="addButton" onAction="#onButtonAdd" />
         <Button fx:id="removeButton" onAction="#onButtonRemove" />
         <Button fx:id="editButton" onAction="#onButtonEdit" />
+        <Button fx:id="duplicateButton" onAction="#onButtonDuplicate" />
         <Button fx:id="refreshButton" onAction="#onButtonRefresh" />
     </ToolBar>
     <fx:include fx:id="searchBar" source="SearchBar.fxml"/>

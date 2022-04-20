@@ -66,6 +66,14 @@ public class MainWindowController {
         aboutBox.showAndWait();
     }
 
+    public void onMenuEditEditClicked(ActionEvent actionEvent) throws IOException {
+        tourOverviewController.onButtonEdit(actionEvent);
+    }
+
+    public void onMenuEditDuplicateClicked(ActionEvent actionEvent) {
+        tourOverviewController.onButtonDuplicate(actionEvent);
+    }
+
     public void onImportClicked(ActionEvent actionEvent) throws IOException {
         FileChooser fileChooser = new FileChooser();
         String fileChooserTitle = "";

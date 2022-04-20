@@ -1,6 +1,7 @@
 package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.FXMLDependencyInjection;
+import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
 import javafx.event.ActionEvent;
@@ -92,7 +93,20 @@ public class TourOverviewController {
             confirmationBox.showAndWait();
             return;
         }
-        startSecondaryStage("EditTour.fxml"); }
+        startSecondaryStage("EditTour.fxml");
+    }
+
+    public void onButtonDuplicate(ActionEvent actionEvent) {
+        TourItem selectedTour = tourItemList.getSelectionModel().getSelectedItem();
+        if (selectedTour != null) {
+            if(tourOverviewViewModel.duplicateExists(selectedTour)) {
+                showTourExistsWarning(selectedTour.getName());
+                return;
+            }
+        }
+        tourOverviewViewModel.addDuplicate(selectedTour);
+        tourOverviewViewModel.refreshToursList();
+    }
 
     public void onButtonRefresh(ActionEvent actionEvent) {
         tourOverviewViewModel.refreshToursList();
@@ -129,5 +143,28 @@ public class TourOverviewController {
         tourItemList.setItems(tourOverviewViewModel.getObservableTours());
         tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
         tourItemList.getSelectionModel().selectLast();
+    }
+
+    public void showTourExistsWarning(String tourName) {
+        tourName = tourName.replace("_copy", "");
+        String AlertBox_Title = "";
+        String AlertBox_ContentText ="";
+        String AlertBox_HeaderText = "";
+
+        if (locale.toString().equals("en")) {
+            AlertBox_Title = "Copy tour failed";
+            AlertBox_HeaderText = "Warning";
+            AlertBox_ContentText = "Copying tour failed. A Copy of " + tourName + " already exists.";
+        }
+
+        if (locale.toString().equals("de")) {
+            AlertBox_Title = "Tour kopieren Fehler";
+            AlertBox_HeaderText = "Warnung";
+            AlertBox_ContentText = "Es konnte keine Kopie angelegt werden. Eine Tour " + tourName + " existiert bereits.";
+        }
+        Alert warningBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+        warningBox.setTitle(AlertBox_Title);
+        warningBox.setHeaderText(AlertBox_HeaderText);
+        warningBox.showAndWait();
     }
 }

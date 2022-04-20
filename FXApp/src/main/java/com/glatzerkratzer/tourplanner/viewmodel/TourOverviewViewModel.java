@@ -64,4 +64,25 @@ public class TourOverviewViewModel {
         DAL.getInstance().tourDao().delete(tourItem);
         observableTourItems.remove(tourItem);
     }
+
+    public boolean addTour(TourItem tourItem) {
+        DAL.getInstance().tourDao().add(tourItem);
+        return true;
+    }
+
+    public void addDuplicate(TourItem tourItem) {
+        TourItem duplicateTourItem = new TourItem();
+        duplicateTourItem.setName(tourItem.getName() + "_copy");
+        duplicateTourItem.setDescription(tourItem.getDescription());
+        duplicateTourItem.setStart(tourItem.getStart());
+        duplicateTourItem.setDestination(tourItem.getDestination());
+        duplicateTourItem.setTransportType(tourItem.getTransportType());
+        addTour(duplicateTourItem);
+    }
+
+    public boolean duplicateExists(TourItem tourItem) {
+        if (tourItem.getName().contains("_copy")) { return true; }
+        if (DAL.getInstance().tourDao().getTourItemIdByName(tourItem.getName() + "_copy") > 0) { return true; }
+        return false;
+    }
 }
