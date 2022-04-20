@@ -6,9 +6,12 @@ import com.glatzerkratzer.tourplanner.viewmodel.MainWindowViewModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -26,6 +29,8 @@ public class MainWindowController {
     @FXML private SearchBarController searchBarController;    // injected controller of SearchBar.fxml
     @FXML private TourOverviewController tourOverviewController;    // injected controller of TourOverview.fxml
     @FXML private TourDetailsController tourDetailsController;    // injected controller of TourDetails.fxml
+
+    @FXML private MenuBar menu;
 
     private final MainWindowViewModel mainViewModel;
     private Locale locale;
@@ -113,6 +118,21 @@ public class MainWindowController {
             showTourExistsWarning(existingTourItems.get(0).getName());
         }
         tourOverviewController.getTourOverviewViewModel().refreshToursList();
+    }
+
+    public void onMenuOptionsSettingsLanguageClicked(ActionEvent actionEvent) throws IOException {
+        Stage primaryStage = (Stage) menu.getScene().getWindow();
+        Locale switchedLocale = null;
+
+        if (locale.toString().equals("de")) {
+            switchedLocale = Locale.ENGLISH;
+        }
+        if (locale.toString().equals("en")) {
+            switchedLocale = Locale.GERMAN;
+        }
+
+        Parent root = FXMLDependencyInjection.load("MainWindow.fxml", switchedLocale );  // Locale.GERMAN, Locale.ENGLISH
+        primaryStage.getScene().setRoot(root);
     }
 
     public void showTourExistsWarning(String existingTourItemName) {
