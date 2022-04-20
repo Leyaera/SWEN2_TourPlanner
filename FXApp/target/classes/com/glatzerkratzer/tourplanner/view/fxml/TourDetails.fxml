@@ -18,11 +18,21 @@
     <SplitPane dividerPositions="0.5" orientation="VERTICAL" VBox.vgrow="ALWAYS">
         <TabPane tabClosingPolicy="UNAVAILABLE">
             <Tab fx:id="tourDetails_tab_description" text="%TourDetails_Tab_Description">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/description.png"/>
+                    </ImageView>
+                </graphic>
                 <content>
                     <fx:include fx:id="tourDetailsDescription" source="TourDetailsDescription.fxml"/>
                 </content>
             </Tab>
             <Tab fx:id="tourDetails_tab_map" text="%TourDetails_Tab_Map">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/map.png"/>
+                    </ImageView>
+                </graphic>
                 <Pane>
                     <children>
                         <ImageView>
@@ -34,9 +44,19 @@
                 </Pane>
             </Tab>
             <Tab fx:id="tourDetails_tab_highlights" text="%TourDetails_Tab_Highlights">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/highlights.png"/>
+                    </ImageView>
+                </graphic>
                 <TextArea/>
             </Tab>
             <Tab fx:id="tourDetails_tab_log" text="%TourDetails_Tab_Log">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/logs.png"/>
+                    </ImageView>
+                </graphic>
                 <TextArea/>
             </Tab>
         </TabPane>
