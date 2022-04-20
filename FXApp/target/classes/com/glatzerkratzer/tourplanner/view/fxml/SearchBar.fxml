@@ -10,8 +10,8 @@
     <userData>
         <fx:reference source="controller"/>
     </userData>
-    <TextField fx:id="searchTextField" HBox.hgrow="ALWAYS"/>
-    <Button fx:id="searchButton" onAction="#onSearchButton"/>
+    <TextField fx:id="searchTextField" onKeyTyped="#onKeyTypedSearch" HBox.hgrow="ALWAYS"/>
+    <!-- <Button fx:id="searchButton" onAction="#onSearchButton"/> -->
     <stylesheets>
         <URL value="@../css/searchBarStyle.css" />
     </stylesheets>

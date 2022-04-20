@@ -16,6 +16,7 @@
         <Button fx:id="editButton" onAction="#onButtonEdit" />
         <Button fx:id="refreshButton" onAction="#onButtonRefresh" />
     </ToolBar>
+    <fx:include fx:id="searchBar" source="SearchBar.fxml"/>
     <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS"/>
     <stylesheets>
         <URL value="@../css/tourOverviewStyle.css" />

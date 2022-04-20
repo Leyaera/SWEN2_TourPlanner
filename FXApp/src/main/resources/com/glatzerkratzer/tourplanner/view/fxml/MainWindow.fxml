@@ -22,7 +22,6 @@
             <MenuItem text="%Menu_Help_About" onAction="#onMenuHelpAboutClicked"/>
         </Menu>
     </MenuBar>
-    <fx:include fx:id="searchBar" source="SearchBar.fxml"/>
     <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
         <fx:include fx:id="tourOverview" source="TourOverview.fxml"/>
         <fx:include fx:id="tourDetails" source="TourDetails.fxml"/>

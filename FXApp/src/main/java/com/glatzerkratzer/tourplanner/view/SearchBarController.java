@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.util.Locale;
 
@@ -31,7 +32,11 @@ public class SearchBarController {
         searchTextField.textProperty().bindBidirectional( searchBarViewModel.searchStringProperty() );
     }
 
-    public void onSearchButton(ActionEvent actionEvent) {
+    /*public void onSearchButton(ActionEvent actionEvent) {
         searchBarViewModel.doSearch();
     }
+
+     */
+
+    public void onKeyTypedSearch(KeyEvent keyEvent) { searchBarViewModel.doSearch(); }
 }
