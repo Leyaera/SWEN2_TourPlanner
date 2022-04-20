@@ -2,29 +2,66 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.glatzerkratzer.tourplanner.view.MainWindowController"
       prefHeight="800.0" prefWidth="1000.0">
     <MenuBar>
         <Menu text="%Menu_File">
-            <MenuItem text="%Menu_File_Import" onAction="#onImportClicked"/>
+            <MenuItem fx:id="menuFileImport" text="%Menu_File_Import" onAction="#onImportClicked">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/menu_import.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
             <SeparatorMenuItem  />
-            <MenuItem text="%Menu_File_Quit" onAction="#onMenuFileQuitClicked"/>
+            <MenuItem fx:id="menuFileQuit" text="%Menu_File_Quit" onAction="#onMenuFileQuitClicked"/>
         </Menu>
         <Menu text="%Menu_Edit">
-            <MenuItem text="%Menu_Edit_Edit" onAction="#onMenuEditEditClicked"/>
-            <MenuItem text="%Menu_Edit_Duplicate" onAction="#onMenuEditDuplicateClicked"/>
+            <MenuItem fx:id="menuEditEdit" text="%Menu_Edit_Edit" onAction="#onMenuEditEditClicked">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/menu_edit.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
+            <MenuItem text="%Menu_Edit_Duplicate" onAction="#onMenuEditDuplicateClicked">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/menu_copy.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
         <Menu text="%Menu_Options">
-            <MenuItem mnemonicParsing="false" text="%Menu_Options_Settings"/>
+            <MenuItem fx:id="menuOptionsSettings" text="%Menu_Options_Settings">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/menu_settings.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
         <Menu text="%Menu_Help">
-            <MenuItem text="%Menu_Help_About" onAction="#onMenuHelpAboutClicked"/>
+            <MenuItem fx:id="menuHelpAbout" text="%Menu_Help_About" onAction="#onMenuHelpAboutClicked">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/menu_help.png"/>
+                    </ImageView>
+                </graphic>
+            </MenuItem>
         </Menu>
     </MenuBar>
     <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
         <fx:include fx:id="tourOverview" source="TourOverview.fxml"/>
         <fx:include fx:id="tourDetails" source="TourDetails.fxml"/>
     </SplitPane>
+
+    <stylesheets>
+        <URL value="@../css/mainWindowStyle.css" />
+    </stylesheets>
 </VBox>
