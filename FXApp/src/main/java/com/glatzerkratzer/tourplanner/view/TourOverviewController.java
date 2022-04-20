@@ -130,5 +130,4 @@ public class TourOverviewController {
         tourItemList.getSelectionModel().selectedItemProperty().addListener(tourOverviewViewModel.getChangeListener());
         tourItemList.getSelectionModel().selectLast();
     }
-
 }

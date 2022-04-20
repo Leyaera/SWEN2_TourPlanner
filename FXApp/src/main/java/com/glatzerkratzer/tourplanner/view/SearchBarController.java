@@ -29,7 +29,6 @@ public class SearchBarController {
     @FXML
     void initialize() {
         searchTextField.textProperty().bindBidirectional( searchBarViewModel.searchStringProperty() );
-        searchButton.disableProperty().bind( searchBarViewModel.searchDisabledBinding() );
     }
 
     public void onSearchButton(ActionEvent actionEvent) {

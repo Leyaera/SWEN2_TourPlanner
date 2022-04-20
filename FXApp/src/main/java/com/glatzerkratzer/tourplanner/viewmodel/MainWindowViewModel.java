@@ -1,7 +1,13 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
 import com.glatzerkratzer.tourplanner.bl.BL;
+import com.glatzerkratzer.tourplanner.dal.DAL;
+import com.glatzerkratzer.tourplanner.dal.TourItemDao;
 import com.glatzerkratzer.tourplanner.model.TourItem;
+import com.glatzerkratzer.tourplanner.model.TransportType;
+
+import java.io.*;
+import java.util.Scanner;
 
 public class MainWindowViewModel {
     private SearchBarViewModel searchBarViewModel;
@@ -33,5 +39,27 @@ public class MainWindowViewModel {
     private void searchTours(String searchString) {
         var tours = BL.getInstance().findMatchingTours( searchString );
         tourOverviewViewModel.setTours(tours);
+    }
+
+    public void importFile(File file) {
+        TourItem tourItem = new TourItem();
+        String filePath = file.getAbsolutePath();
+        String delimiter = ";";
+        String line = "";
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] tourItemString = line.split(delimiter);
+                tourItem.setName(tourItemString[0]);
+                tourItem.setStart(tourItemString[1]);
+                tourItem.setDestination(tourItemString[2]);
+                tourItem.setTransportType(TransportType.valueOf(tourItemString[3]));
+                tourItem.setDescription(tourItemString[4]);
+                DAL.getInstance().tourDao().add(tourItem);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

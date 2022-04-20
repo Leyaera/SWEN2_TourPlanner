@@ -12,6 +12,7 @@ public class ControllerFactory {
     private final TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
     private final AddTourViewModel addTourViewModel;
     private final EditTourViewModel editTourViewModel;
+    private final ImportTourViewModel importTourViewModel;
 
     public ControllerFactory() {
         searchBarViewModel = new SearchBarViewModel();
@@ -21,6 +22,7 @@ public class ControllerFactory {
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourOverviewViewModel, tourDetailsViewModel);
         addTourViewModel = new AddTourViewModel();
         editTourViewModel = new EditTourViewModel();
+        importTourViewModel = new ImportTourViewModel();
     }
 
     //
@@ -42,6 +44,8 @@ public class ControllerFactory {
             return new AddTourController(addTourViewModel, locale);
         } else if (controllerClass == EditTourController.class) {
             return new EditTourController(editTourViewModel, locale);
+        } else if (controllerClass == ImportTourController.class) {
+            return new ImportTourController(importTourViewModel, locale);
         }
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }
