@@ -3,16 +3,14 @@ package com.glatzerkratzer.tourplanner.view;
 import com.glatzerkratzer.tourplanner.viewmodel.TourDetailsViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.util.Locale;
 
 public class TourDetailsController {
 
+    @FXML private TourDetailsDescriptionController tourDetailsDescriptionController;
 
-    @FXML
-    public TextArea tourDescriptionText;
+    @FXML public TextArea tourDescriptionText;
 
     private final TourDetailsViewModel tourDetailsViewModel;
     private Locale locale;
@@ -25,6 +23,8 @@ public class TourDetailsController {
     public TourDetailsViewModel getTourDetailsViewModel() {
         return tourDetailsViewModel;
     }
+
+    public TourDetailsDescriptionController getTourDetailsDescriptionController() { return tourDetailsDescriptionController; }
 
     @FXML
     void initialize() {

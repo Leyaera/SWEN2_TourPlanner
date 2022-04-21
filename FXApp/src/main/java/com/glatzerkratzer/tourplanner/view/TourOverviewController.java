@@ -18,8 +18,9 @@ import java.util.Locale;
 import java.util.Optional;
 
 public class TourOverviewController {
-    @FXML
-    public ListView<TourItem> tourItemList;
+    @FXML private SearchBarController searchBarController;    // injected controller of SearchBar.fxml
+
+    @FXML public ListView<TourItem> tourItemList;
 
     private final TourOverviewViewModel tourOverviewViewModel;
     private Locale locale;

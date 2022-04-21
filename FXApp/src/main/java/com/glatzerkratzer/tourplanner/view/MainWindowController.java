@@ -26,7 +26,6 @@ public class MainWindowController {
     // Controllers of included fxml-files are injected here
     // fx:id Attribute of <fx:include> tag + "Controller"
     // tutorial see https://riptutorial.com/javafx/example/7285/nested-controllers
-    @FXML private SearchBarController searchBarController;    // injected controller of SearchBar.fxml
     @FXML private TourOverviewController tourOverviewController;    // injected controller of TourOverview.fxml
     @FXML private TourDetailsController tourDetailsController;    // injected controller of TourDetails.fxml
 
@@ -133,6 +132,7 @@ public class MainWindowController {
 
         Parent root = FXMLDependencyInjection.load("MainWindow.fxml", switchedLocale );  // Locale.GERMAN, Locale.ENGLISH
         primaryStage.getScene().setRoot(root);
+        mainViewModel.selectTour(tourOverviewController.tourItemList.getSelectionModel().getSelectedItem());
     }
 
     public void showTourExistsWarning(String existingTourItemName) {

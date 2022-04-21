@@ -35,7 +35,7 @@ public class MainWindowViewModel {
         this.tourOverviewViewModel.addSelectionChangedListener(selectedTour->selectTour(selectedTour));
     }
 
-    private void selectTour(TourItem selectedTourItem) {
+    public void selectTour(TourItem selectedTourItem) {
         tourDetailsViewModel.setTourModel(selectedTourItem);
     }
 
