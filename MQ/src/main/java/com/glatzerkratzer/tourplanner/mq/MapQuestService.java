@@ -34,6 +34,8 @@ public class MapQuestService {
     }
 
     public JSONObject getRoute(String start, String destination) throws IOException, InterruptedException {
+        start = start.replace(" ", "%20");
+        destination = destination.replace(" ", "%20");
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://www.mapquestapi.com/directions/v2/route?key=" + KEY + "&from=" + start + "&to=" + destination))
                 .header("Content-Type", "application/json")
@@ -58,7 +60,6 @@ public class MapQuestService {
     }
 
     public String getImageURLOf(JSONObject route) throws IOException, InterruptedException {
-        // DEBUG
         double ulLat = route.getJSONObject("route").getJSONObject("boundingBox").getJSONObject("ul").getDouble("lat");
         double ulLng = route.getJSONObject("route").getJSONObject("boundingBox").getJSONObject("ul").getDouble("lng");
         double lrLat = route.getJSONObject("route").getJSONObject("boundingBox").getJSONObject("lr").getDouble("lat");
