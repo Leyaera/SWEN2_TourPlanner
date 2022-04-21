@@ -87,6 +87,7 @@
                         </ImageView>
                     </graphic>
                 </MenuItem>
+                <MenuItem fx:id="testRoute" text="Testroute" onAction="#onTestRouteClicked"/>
             </items>
         </Menu>
     </MenuBar>

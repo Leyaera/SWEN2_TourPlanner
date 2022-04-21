@@ -27,6 +27,10 @@
                         <Image url="@../img/icons/map.png"/>
                     </ImageView>
                 </graphic>
+                <content>
+                    <fx:include fx:id="tourDetailsMap" source ="TourDetailsMap.fxml"/>
+                </content>
+                <!--
                 <Pane>
                     <children>
                         <ImageView>
@@ -36,6 +40,7 @@
                         </ImageView>
                     </children>
                 </Pane>
+                -->
             </Tab>
             <Tab fx:id="tourDetails_tab_highlights" text="%TourDetails_Tab_Highlights">
                 <graphic>

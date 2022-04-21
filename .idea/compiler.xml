@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="BL" />
         <module name="FXApp" />
+        <module name="MQ" />
         <module name="DAL" />
         <module name="DB" />
       </profile>

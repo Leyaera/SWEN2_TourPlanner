@@ -2,25 +2,23 @@ package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.FXMLDependencyInjection;
 import com.glatzerkratzer.tourplanner.model.TourItem;
+import com.glatzerkratzer.tourplanner.mq.MapQuestService;
 import com.glatzerkratzer.tourplanner.viewmodel.MainWindowViewModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.json.JSONObject;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class MainWindowController {
     // Controllers of included fxml-files are injected here
@@ -166,5 +164,10 @@ public class MainWindowController {
         warningBox.setTitle(AlertBox_Title);
         warningBox.setHeaderText(AlertBox_HeaderText);
         warningBox.showAndWait();
+    }
+
+    public void onTestRouteClicked(ActionEvent actionEvent) throws IOException, InterruptedException {
+        JSONObject routJson = MapQuestService.getMapQuestService().getRoute("Wien", "Jena");
+        MapQuestService.getMapQuestService().getImageURLOf(routJson);
     }
 }

@@ -30,7 +30,7 @@ public class TourItemDao implements Dao<TourItem> {
                         resultSet.getString(5),                             // destination
                         TransportType.valueOf(resultSet.getString(6)),      // transportType
                         0.0,                                                   // distance
-                        0.0,                                                   // duration
+                        "0.0",                                                   // duration
                         "mapPath"                                              // mapPath
                 ));
             }
@@ -67,7 +67,7 @@ public class TourItemDao implements Dao<TourItem> {
                         resultSet.getString(5),                             // destination
                         TransportType.valueOf(resultSet.getString(6)),      // transportType
                         0.0,                                                   // distance
-                        0.0,                                                   // duration
+                        "0.0",                                                   // duration
                         "mapPath"                                              // mapPath
                 );
                 latestTourItems.add(newTourItem);

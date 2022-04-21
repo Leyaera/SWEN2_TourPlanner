@@ -10,6 +10,7 @@ public class ControllerFactory {
     private final TourOverviewViewModel tourOverviewViewModel;
     private final TourDetailsViewModel tourDetailsViewModel;
     private final TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
+    private final TourDetailsMapViewModel tourDetailsMapViewModel;
     private final AddTourViewModel addTourViewModel;
     private final EditTourViewModel editTourViewModel;
 
@@ -17,7 +18,8 @@ public class ControllerFactory {
         searchBarViewModel = new SearchBarViewModel();
         tourOverviewViewModel = new TourOverviewViewModel();
         tourDetailsDescriptionViewModel = new TourDetailsDescriptionViewModel();
-        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel);
+        tourDetailsMapViewModel = new TourDetailsMapViewModel();
+        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel, tourDetailsMapViewModel);
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourOverviewViewModel, tourDetailsViewModel);
         addTourViewModel = new AddTourViewModel();
         editTourViewModel = new EditTourViewModel();
@@ -38,6 +40,8 @@ public class ControllerFactory {
             return new TourOverviewController(tourOverviewViewModel, locale);
         } else if (controllerClass == TourDetailsDescriptionController.class) {
             return new TourDetailsDescriptionController(tourDetailsDescriptionViewModel, locale);
+        } else if (controllerClass == TourDetailsMapController.class) {
+            return new TourDetailsMapController(tourDetailsMapViewModel, locale);
         } else if (controllerClass == AddTourController.class) {
             return new AddTourController(addTourViewModel, locale);
         } else if (controllerClass == EditTourController.class) {

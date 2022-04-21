@@ -1,52 +1,33 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
-import com.glatzerkratzer.tourplanner.model.TransportType;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import lombok.Setter;
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class TourDetailsDescriptionViewModel {
-
+public class TourDetailsMapViewModel {
     private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
     private final StringProperty start = new SimpleStringProperty();
     private final StringProperty destination = new SimpleStringProperty();
     private final StringProperty transportType = new SimpleStringProperty();
     private final StringProperty distance = new SimpleStringProperty();
     private final StringProperty duration = new SimpleStringProperty();
-    private final StringProperty tourDescriptionStartTag = new SimpleStringProperty();
-    private final StringProperty tourDescriptionDestinationTag = new SimpleStringProperty();
-    private final StringProperty tourDescriptionDescriptionTag = new SimpleStringProperty();
+    private final StringProperty tourMapStartTag = new SimpleStringProperty();
+    private final StringProperty tourMapDestinationTag = new SimpleStringProperty();
+    private final ObjectProperty<Image> mapImage= new SimpleObjectProperty();
+
 
     public ResourceBundle bundle;
     public Locale locale;
 
 
-    public TourDetailsDescriptionViewModel() {
-    }
-
     public String getName() { return name.get(); }
     public void setName(String name) { this.name.setValue(name); }
     public StringProperty nameProperty() { return name; }
 
-    public StringProperty TourDescriptionDescriptionTagProperty() { return tourDescriptionDescriptionTag; }
-    public String getDescription() { return description.get(); }
-    public void setDescription(String description) {
-        String descriptionTag = "";
-        if (!description.isBlank()) {
-            description = "\n\n" + description;
-            descriptionTag = bundle.getString("TourDescription_DescriptionTag");
-
-        }
-        this.description.setValue(description);
-        this.tourDescriptionDescriptionTag.setValue(descriptionTag);
-    }
-    public StringProperty descriptionProperty() { return description; }
-
-    public StringProperty TourDescriptionStartTagProperty() { return tourDescriptionStartTag; }
+    public StringProperty TourMapStartTagProperty() { return tourMapStartTag; }
 
     public String getStart() { return start.get(); }
     public void setStart(String start) {
@@ -56,11 +37,11 @@ public class TourDetailsDescriptionViewModel {
             tourStartTag = bundle.getString("TourDescription_StartTag");
         }
         this.start.setValue(start);
-        this.tourDescriptionStartTag.setValue(tourStartTag);
+        this.tourMapStartTag.setValue(tourStartTag);
     }
     public StringProperty startProperty() { return start; }
 
-    public StringProperty TourDescriptionDestinationTagProperty() { return tourDescriptionDestinationTag; }
+    public StringProperty TourMapDestinationTagProperty() { return tourMapDestinationTag; }
     public String getDestination() { return destination.get(); }
     public void setDestination(String destination) {
         String tourDestinationTag = "";
@@ -69,7 +50,7 @@ public class TourDetailsDescriptionViewModel {
             tourDestinationTag = bundle.getString("TourDescription_DestinationTag");
         }
         this.destination.setValue(destination);
-        this.tourDescriptionDestinationTag.setValue(tourDestinationTag);
+        this.tourMapDestinationTag.setValue(tourDestinationTag);
     }
     public StringProperty destinationProperty() { return destination; }
 
@@ -101,4 +82,19 @@ public class TourDetailsDescriptionViewModel {
         this.duration.setValue(tourDuration);
     }
     public StringProperty durationProperty() { return duration; }
+
+    public final Image getImage() { return mapImage.get(); }
+    public final void setMapImage(String mapPath) {
+        Image image = new Image(mapPath);
+        this.mapImage.set(image);
+    }
+    public final ObjectProperty<Image> imageProperty() { return mapImage; }
+
+    /*
+    public String getMapPath() { return mapPath.get(); }
+    public void setMapPath(String mapPath) { this.mapPath.setValue(mapPath); }
+    public StringProperty mapPathProperty() { return mapPath; }
+     */
+
+
 }

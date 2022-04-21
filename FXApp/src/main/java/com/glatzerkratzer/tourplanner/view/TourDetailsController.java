@@ -9,6 +9,7 @@ import java.util.Locale;
 public class TourDetailsController {
 
     @FXML private TourDetailsDescriptionController tourDetailsDescriptionController;
+    @FXML private TourDetailsMapController tourDetailsMapController;
 
     @FXML public TextArea tourDescriptionText;
 
@@ -24,11 +25,7 @@ public class TourDetailsController {
         return tourDetailsViewModel;
     }
 
-    public TourDetailsDescriptionController getTourDetailsDescriptionController() { return tourDetailsDescriptionController; }
-
     @FXML
     void initialize() {
-        //tourDescriptionText.textProperty().bindBidirectional(tourDetailsViewModel.nameProperty());
-        //tourDescriptionTextDescription.textProperty().bindBidirectional(tourDetailsViewModel.descriptionProperty());
     }
 }

@@ -54,8 +54,11 @@ public class TourOverviewViewModel {
 
     public void refreshToursList() {
         int currentListSize = observableTourItems.size();
-        if (currentListSize > 0) { currentListSize -= 1; }
-        var tours = DAL.getInstance().tourDao().getLatestEntries(observableTourItems.get(currentListSize).getId());
+        int newId = 0;
+        if (currentListSize > 0) {
+            newId = observableTourItems.get(currentListSize - 1).getId();
+        }
+        var tours = DAL.getInstance().tourDao().getLatestEntries(newId);
         observableTourItems.addAll(tours);
     }
 
