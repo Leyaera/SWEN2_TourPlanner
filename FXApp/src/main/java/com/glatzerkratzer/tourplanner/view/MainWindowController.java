@@ -46,36 +46,8 @@ public class MainWindowController {
     @FXML void initialize() {
     }
 
-    public void onMenuFileQuitClicked(ActionEvent actionEvent) {
-        Platform.exit();
-    }
-
-    public void onMenuHelpAboutClicked(ActionEvent actionEvent) {
-        String AlertBox_Title = "";
-        String AlertBox_ContentText ="";
-        String AlertBox_HeaderText = "Info";
-
-        if (locale.toString().equals("en")) {
-            AlertBox_Title = "About TourPlanner";
-            AlertBox_ContentText = "Semester project BIF4-SWEN2\nby Stefanie Glatzer & Carmen Kratzer\nSS 2022";
-        }
-
-        if (locale.toString().equals("de")) {
-            AlertBox_Title = "Über TourPlanner";
-            AlertBox_ContentText = "Semesterprojekt BIF4-SWEN2\nvon Stefanie Glatzer & Carmen Kratzer\nSS 2022";
-        }
-        Alert aboutBox = new Alert(Alert.AlertType.INFORMATION, AlertBox_ContentText);
-        aboutBox.setTitle(AlertBox_Title);
-        aboutBox.setHeaderText(AlertBox_HeaderText);
-        aboutBox.showAndWait();
-    }
-
-    public void onMenuEditEditClicked(ActionEvent actionEvent) throws IOException {
-        tourOverviewController.onButtonEdit(actionEvent);
-    }
-
-    public void onMenuEditDuplicateClicked(ActionEvent actionEvent) {
-        tourOverviewController.onButtonDuplicate(actionEvent);
+    public void onMenuFileAddClicked(ActionEvent actionEvent) throws IOException {
+        tourOverviewController.onButtonAdd(actionEvent);
     }
 
     public void onImportClicked(ActionEvent actionEvent) throws IOException {
@@ -119,6 +91,25 @@ public class MainWindowController {
         tourOverviewController.getTourOverviewViewModel().refreshToursList();
     }
 
+    public void onMenuFileQuitClicked(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+
+    public void onMenuEditEditClicked(ActionEvent actionEvent) throws IOException {
+        tourOverviewController.onButtonEdit(actionEvent);
+    }
+
+    public void onMenuEditDuplicateClicked(ActionEvent actionEvent) {
+        tourOverviewController.onButtonDuplicate(actionEvent);
+    }
+
+    public void onMenuEditDeleteClicked(ActionEvent actionEvent) throws IOException {
+        tourOverviewController.onButtonRemove(actionEvent);
+    }
+
+    public void onMenuEditRefreshClicked(ActionEvent actionEvent) throws IOException {
+        tourOverviewController.onButtonRefresh(actionEvent);
+    }
     public void onMenuOptionsSettingsLanguageClicked(ActionEvent actionEvent) throws IOException {
         Stage primaryStage = (Stage) menu.getScene().getWindow();
         Locale switchedLocale = null;
@@ -133,6 +124,26 @@ public class MainWindowController {
         Parent root = FXMLDependencyInjection.load("MainWindow.fxml", switchedLocale );  // Locale.GERMAN, Locale.ENGLISH
         primaryStage.getScene().setRoot(root);
         mainViewModel.selectTour(tourOverviewController.tourItemList.getSelectionModel().getSelectedItem());
+    }
+
+    public void onMenuHelpAboutClicked(ActionEvent actionEvent) {
+        String AlertBox_Title = "";
+        String AlertBox_ContentText ="";
+        String AlertBox_HeaderText = "Info";
+
+        if (locale.toString().equals("en")) {
+            AlertBox_Title = "About TourPlanner";
+            AlertBox_ContentText = "Semester project BIF4-SWEN2\nby Stefanie Glatzer & Carmen Kratzer\nSS 2022";
+        }
+
+        if (locale.toString().equals("de")) {
+            AlertBox_Title = "Über TourPlanner";
+            AlertBox_ContentText = "Semesterprojekt BIF4-SWEN2\nvon Stefanie Glatzer & Carmen Kratzer\nSS 2022";
+        }
+        Alert aboutBox = new Alert(Alert.AlertType.INFORMATION, AlertBox_ContentText);
+        aboutBox.setTitle(AlertBox_Title);
+        aboutBox.setHeaderText(AlertBox_HeaderText);
+        aboutBox.showAndWait();
     }
 
     public void showTourExistsWarning(String existingTourItemName) {

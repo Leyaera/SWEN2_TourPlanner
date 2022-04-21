@@ -13,6 +13,13 @@
     <MenuBar fx:id="menu">
         <Menu text="%Menu_File">
             <items>
+                <MenuItem fx:id="menuFileAdd" text="%Menu_File_Add" onAction="#onMenuFileAddClicked">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/menu_add.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
                 <MenuItem fx:id="menuFileImport" text="%Menu_File_Import" onAction="#onImportClicked">
                     <graphic>
                         <ImageView>
@@ -37,6 +44,21 @@
                     <graphic>
                         <ImageView>
                             <Image url="@../img/icons/menu_copy.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+                <MenuItem fx:id="menuEditDelete" text="%Menu_Edit_Delete" onAction="#onMenuEditDeleteClicked">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/menu_delete.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
+                <SeparatorMenuItem  />
+                <MenuItem fx:id="menuEditRefresh" text="%Menu_Edit_Refresh" onAction="#onMenuEditRefreshClicked">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/menu_refresh.png"/>
                         </ImageView>
                     </graphic>
                 </MenuItem>
