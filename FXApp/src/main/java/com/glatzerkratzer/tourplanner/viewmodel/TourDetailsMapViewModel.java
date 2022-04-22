@@ -18,10 +18,8 @@ public class TourDetailsMapViewModel {
     private final StringProperty tourMapDestinationTag = new SimpleStringProperty();
     private final ObjectProperty<Image> mapImage= new SimpleObjectProperty();
 
-
     public ResourceBundle bundle;
     public Locale locale;
-
 
     public String getName() { return name.get(); }
     public void setName(String name) { this.name.setValue(name); }
@@ -77,7 +75,7 @@ public class TourDetailsMapViewModel {
     public void setDuration(String duration) {
         String tourDuration = "";
         if (!duration.equals("-1.0")) {
-            tourDuration = "| " + duration + " min\n\n";
+            tourDuration = "| " + duration + "\n\n";
         }
         this.duration.setValue(tourDuration);
     }
@@ -89,12 +87,4 @@ public class TourDetailsMapViewModel {
         this.mapImage.set(image);
     }
     public final ObjectProperty<Image> imageProperty() { return mapImage; }
-
-    /*
-    public String getMapPath() { return mapPath.get(); }
-    public void setMapPath(String mapPath) { this.mapPath.setValue(mapPath); }
-    public StringProperty mapPathProperty() { return mapPath; }
-     */
-
-
 }

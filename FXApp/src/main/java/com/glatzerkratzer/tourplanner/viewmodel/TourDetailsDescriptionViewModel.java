@@ -96,7 +96,7 @@ public class TourDetailsDescriptionViewModel {
     public void setDuration(String duration) {
         String tourDuration = "";
         if (!duration.equals("-1.0")) {
-            tourDuration = "| " + duration + " min\n\n";
+            tourDuration = "| " + duration + "\n\n";
         }
         this.duration.setValue(tourDuration);
     }

@@ -165,9 +165,4 @@ public class MainWindowController {
         warningBox.setHeaderText(AlertBox_HeaderText);
         warningBox.showAndWait();
     }
-
-    public void onTestRouteClicked(ActionEvent actionEvent) throws IOException, InterruptedException {
-        JSONObject routJson = MapQuestService.getMapQuestService().getRoute("Wien", "Jena");
-        MapQuestService.getMapQuestService().getImageURLOf(routJson);
-    }
 }
