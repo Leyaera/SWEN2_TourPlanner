@@ -11,7 +11,22 @@ import java.util.*;
 public class TourItemDao implements Dao<TourItem> {
 
 
-    public TourItemDao() {}
+    public TourItemDao() {
+        try{
+            Connection conn = DatabaseService.getDatabaseService().getConnection();
+            Statement s = conn.createStatement();
+
+            String createTours = "CREATE TABLE IF NOT EXISTS tours(id SERIAL UNIQUE, name VARCHAR(25) UNIQUE NOT NULL, description VARCHAR(1024), start VARCHAR(25) NOT NULL, destination VARCHAR(25) NOT NULL, transporttype VARCHAR(10) NOT NULL, PRIMARY KEY (id))";
+            String createLogs = "CREATE TABLE IF NOT EXISTS logs(id SERIAL UNIQUE, tourId INTEGER NOT NULL, action VARCHAR(25) NOT NULL, date DATE NOT NULL, time TIMESTAMP NOT NULL, PRIMARY KEY(id))";
+
+            s.addBatch(createTours);
+            s.addBatch(createLogs);
+
+            s.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
+         }
+    }
 
     @Override
     public List<TourItem> getAll() {
