@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -22,6 +23,7 @@ public class TourOverviewController {
 
     @FXML public ListView<TourItem> tourItemList;
 
+    @Getter
     private final TourOverviewViewModel tourOverviewViewModel;
     private Locale locale;
 
@@ -29,11 +31,6 @@ public class TourOverviewController {
         this.tourOverviewViewModel = tourOverviewViewModel;
         this.locale = locale;
     }
-
-    public TourOverviewViewModel getTourOverviewViewModel() {
-        return tourOverviewViewModel;
-    }
-
 
     @FXML
     void initialize() {

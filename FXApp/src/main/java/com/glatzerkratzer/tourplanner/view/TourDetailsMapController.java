@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import lombok.Getter;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ public class TourDetailsMapController {
 
     @FXML public ImageView tourMapImageView;
 
+    @Getter
     private final TourDetailsMapViewModel tourDetailsMapViewModel;
 
     public TourDetailsMapController(TourDetailsMapViewModel tourDetailsMapViewModel, Locale locale) {

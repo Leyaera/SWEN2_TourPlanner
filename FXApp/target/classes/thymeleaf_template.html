@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <h3 style="text-align: center; color: darkcyan;">
+        <span th:text="  'Route Details of '  +  ${tourName}  +  ':'  "></span>
+    </h3>
+
+    <br/>
+    <table>
+        <tr>
+            <td>Start: </td>
+            <td data-th-text="${tourStart}"></td>
+        </tr>
+        <tr>
+            <td>Destination: </td>
+            <td data-th-text="${tourDestination}"></td>
+        </tr>
+        <tr>
+            <td>Tour type: </td>
+            <td data-th-text="${tourType}"></td>
+        </tr>
+        <tr>
+            <td>Distance: </td>
+            <td data-th-text="${tourDistance}"></td>
+        </tr>
+        <tr>
+            <td>Time: </td>
+            <td data-th-text="${tourDuration}"></td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+    <img th:src="${tourMapImage}"/>
+</body>
+</html>

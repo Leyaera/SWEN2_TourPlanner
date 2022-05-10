@@ -58,6 +58,16 @@
                 </graphic>
                 <TextArea/>
             </Tab>
+            <Tab fx:id="tourDetails_tab_pdf" text="%TourDetails_Tab_PDF">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/icons/pdf.png"/>
+                    </ImageView>
+                </graphic>
+                <content>
+                    <fx:include fx:id="Download" source="Download.fxml"/>
+                </content>
+            </Tab>
         </TabPane>
     </SplitPane>
     <stylesheets>

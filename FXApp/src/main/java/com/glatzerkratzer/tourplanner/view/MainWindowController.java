@@ -44,6 +44,11 @@ public class MainWindowController {
     @FXML void initialize() {
     }
 
+    public TourOverviewController getTourOverviewController()
+    {
+        return tourOverviewController;
+    }
+
     public void onMenuFileAddClicked(ActionEvent actionEvent) throws IOException {
         tourOverviewController.onButtonAdd(actionEvent);
     }

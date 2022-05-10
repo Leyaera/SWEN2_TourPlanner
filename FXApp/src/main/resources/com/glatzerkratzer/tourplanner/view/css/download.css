@@ -1,0 +1,31 @@
+#searchPath {
+    -fx-background-position: right 5 center;
+    -fx-padding: 5 25 5 5;
+}
+
+#changeDirButton {
+    -fx-background-image: url('/com/glatzerkratzer/tourplanner/view/img/icons/searchPath.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-padding: 5 25 5 5;
+    -fx-position-shape: absolute;
+    top: 0;
+    border-radius: 5px;
+    right: 0px;
+    z-index: 2;
+    border: none;
+    top: 2px;
+    height: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+#downloadArea {
+    -fx-padding: 30 30 30 30;
+}
+
+#safeCancelButtons {
+    -fx-padding: 15 5 5 0;
+    -fx-spacing: 10;
+}
+

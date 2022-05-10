@@ -10,6 +10,8 @@ public class TourDetailsController {
 
     @FXML private TourDetailsDescriptionController tourDetailsDescriptionController;
     @FXML private TourDetailsMapController tourDetailsMapController;
+    @FXML private DownloadController downloadController;
+    @FXML private MainWindowController mainWindowController;
 
     @FXML public TextArea tourDescriptionText;
 
@@ -28,4 +30,5 @@ public class TourDetailsController {
     @FXML
     void initialize() {
     }
+
 }

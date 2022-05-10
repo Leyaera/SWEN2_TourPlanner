@@ -14,15 +14,17 @@ public class TourOverviewViewModel {
         void changeSelection(TourItem tourItem);
     }
 
+    private DownloadViewModel downloadViewModel;
 
     private List<SelectionChangedListener> listeners = new ArrayList<>();
 
     private ObservableList<TourItem> observableTourItems = FXCollections.observableArrayList();
 
-    public TourOverviewViewModel()
+    public TourOverviewViewModel(DownloadViewModel downloadViewModel)
     {
         List<TourItem> tourItems = DAL.getInstance().tourDao().getAll();
         setTours( tourItems );
+        this.downloadViewModel = downloadViewModel;
     }
 
     public ObservableList<TourItem> getObservableTours() {

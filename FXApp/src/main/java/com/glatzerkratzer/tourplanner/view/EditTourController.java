@@ -36,6 +36,7 @@ public class EditTourController {
         this.editTourViewModel = editTourViewModel;
     }
 
+
     @FXML
     void initialize() {
         this.editTourTransportTypeChoiceBox.getItems().addAll(editTourViewModel.getChoiceBoxItems(locale));
