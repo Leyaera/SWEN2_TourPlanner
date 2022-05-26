@@ -1,0 +1,6 @@
+com\glatzerkratzer\tourplanner\logger\ILoggerWrapper.class
+com\glatzerkratzer\tourplanner\logger\InitialzedState.class
+com\glatzerkratzer\tourplanner\logger\UninitializedState.class
+com\glatzerkratzer\tourplanner\logger\Log4J2Wrapper.class
+com\glatzerkratzer\tourplanner\logger\LoggerStateBase.class
+com\glatzerkratzer\tourplanner\logger\LoggerFactory.class

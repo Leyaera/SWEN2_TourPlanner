@@ -2,15 +2,12 @@ package com.glatzerkratzer.tourplanner.viewmodel;
 
 import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.dal.DAL;
-import com.glatzerkratzer.tourplanner.dal.TourItemDao;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
-import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class MainWindowViewModel {
     private SearchBarViewModel searchBarViewModel;

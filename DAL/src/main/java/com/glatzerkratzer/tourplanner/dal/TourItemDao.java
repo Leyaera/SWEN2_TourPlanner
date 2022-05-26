@@ -4,7 +4,6 @@ import com.glatzerkratzer.tourplanner.database.DatabaseService;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.*;
 

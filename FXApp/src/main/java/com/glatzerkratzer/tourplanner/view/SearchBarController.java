@@ -1,7 +1,6 @@
 package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.viewmodel.SearchBarViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

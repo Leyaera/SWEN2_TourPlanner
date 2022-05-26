@@ -3,7 +3,6 @@ package com.glatzerkratzer.tourplanner.dal;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Dao interface defines an abstract API that performs CRUD operations on objects of type T

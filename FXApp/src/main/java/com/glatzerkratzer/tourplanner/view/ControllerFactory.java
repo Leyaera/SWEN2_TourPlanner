@@ -1,7 +1,6 @@
 package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.viewmodel.*;
-import com.sun.tools.javac.Main;
 import lombok.Getter;
 
 import java.util.Locale;

@@ -48,24 +48,6 @@
         </dependency>
         <dependency>
             <groupId>com.glatzerkratzer.tourplanner</groupId>
-            <artifactId>DAL</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.glatzerkratzer.tourplanner</groupId>
-            <artifactId>BL</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.glatzerkratzer.tourplanner</groupId>
-            <artifactId>BL</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.glatzerkratzer.tourplanner</groupId>
             <artifactId>BL</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
@@ -97,6 +79,12 @@
             <groupId>org.xhtmlrenderer</groupId>
             <artifactId>flying-saucer-pdf</artifactId>
             <version>9.1.20</version>
+        </dependency>
+        <dependency>
+            <groupId>com.glatzerkratzer.tourplanner</groupId>
+            <artifactId>logger</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

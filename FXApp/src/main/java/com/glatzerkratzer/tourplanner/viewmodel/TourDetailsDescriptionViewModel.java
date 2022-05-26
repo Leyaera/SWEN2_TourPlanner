@@ -1,9 +1,7 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
-import com.glatzerkratzer.tourplanner.model.TransportType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import lombok.Setter;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

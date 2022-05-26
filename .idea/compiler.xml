@@ -12,6 +12,7 @@
         <module name="MQ" />
         <module name="DAL" />
         <module name="DB" />
+        <module name="logger" />
       </profile>
     </annotationProcessing>
   </component>

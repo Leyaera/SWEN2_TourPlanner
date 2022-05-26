@@ -1,7 +1,6 @@
 package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.FXMLDependencyInjection;
-import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
 import javafx.event.ActionEvent;

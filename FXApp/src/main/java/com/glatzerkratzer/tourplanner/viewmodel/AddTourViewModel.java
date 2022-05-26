@@ -3,8 +3,6 @@ package com.glatzerkratzer.tourplanner.viewmodel;
 import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

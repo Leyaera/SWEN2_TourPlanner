@@ -2,9 +2,6 @@ package com.glatzerkratzer.tourplanner.viewmodel;
 
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.mq.MapQuestService;
-import com.glatzerkratzer.tourplanner.view.TourDetailsMapController;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import org.json.JSONObject;
 
 import java.io.IOException;

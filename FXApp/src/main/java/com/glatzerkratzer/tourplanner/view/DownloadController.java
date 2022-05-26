@@ -1,13 +1,10 @@
 package com.glatzerkratzer.tourplanner.view;
 
-import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.viewmodel.DownloadViewModel;
 import com.glatzerkratzer.tourplanner.viewmodel.TourDetailsMapViewModel;
-import com.glatzerkratzer.tourplanner.viewmodel.TourOverviewViewModel;
 import com.lowagie.text.DocumentException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
@@ -18,9 +15,6 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
-import javax.swing.*;
-import javax.swing.text.html.ImageView;
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.Locale;
 

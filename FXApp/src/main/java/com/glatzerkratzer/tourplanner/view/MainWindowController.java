@@ -2,7 +2,6 @@ package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.FXMLDependencyInjection;
 import com.glatzerkratzer.tourplanner.model.TourItem;
-import com.glatzerkratzer.tourplanner.mq.MapQuestService;
 import com.glatzerkratzer.tourplanner.viewmodel.MainWindowViewModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,13 +11,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.MenuBar;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class MainWindowController {
     // Controllers of included fxml-files are injected here

@@ -2,7 +2,6 @@ package com.glatzerkratzer.tourplanner.view;
 
 import com.glatzerkratzer.tourplanner.viewmodel.TourDetailsMapViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import lombok.Getter;
