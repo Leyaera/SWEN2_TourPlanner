@@ -12,7 +12,9 @@ import javafx.scene.control.MenuBar;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -89,6 +91,90 @@ public class MainWindowController {
             showTourExistsWarning(existingTourItems.get(0).getName());
         }
         tourOverviewController.getTourOverviewViewModel().refreshToursList();
+    }
+
+    public void onExportClicked(ActionEvent actionEvent) {
+        TourItem currentTour = ControllerFactory.getInstance().getTourOverviewController().tourItemList.getSelectionModel().getSelectedItem();
+        if (currentTour == null) {
+            String AlertBox_Title = "";
+            String AlertBox_ContentText ="";
+            String AlertBox_HeaderText = "";
+
+            if (locale.toString().equals("en")) {
+                AlertBox_Title = "Export Tour";
+                AlertBox_ContentText = "No tour has been selected.";
+                AlertBox_HeaderText = "Warning";
+            }
+
+            if (locale.toString().equals("de")) {
+                AlertBox_Title = "Tour exportieren";
+                AlertBox_ContentText = "Bitte erst Tour auswählen.";
+                AlertBox_HeaderText = "Warnung";
+            }
+
+            Alert confirmationBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+            confirmationBox.setHeaderText(AlertBox_HeaderText);
+            confirmationBox.setTitle(AlertBox_Title);
+            confirmationBox.showAndWait();
+
+            System.out.println("Export Tour: No tour has been selected");
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export tour");
+        fileChooser.setInitialFileName(currentTour.getName());
+        var extensionFilter = new FileChooser.ExtensionFilter("CVS files (*.csv)", ".csv");
+        fileChooser.getExtensionFilters().add(extensionFilter);
+        File csvFile = fileChooser.showSaveDialog(null);
+
+        boolean csvFileIsLocked = !csvFile.renameTo(csvFile);
+        if (csvFileIsLocked) {
+            String AlertBox_Title = "";
+            String AlertBox_ContentText ="";
+            String AlertBox_HeaderText = "";
+
+            if (locale.toString().equals("en")) {
+                AlertBox_Title = "Export Tour";
+                AlertBox_ContentText = "The selected file is already opened in the background. Please close file first.";
+                AlertBox_HeaderText = "Warning";
+            }
+
+            if (locale.toString().equals("de")) {
+                AlertBox_Title = "Tour exportieren";
+                AlertBox_ContentText = "Die ausgewählte Datei ist im Hintergrund geöffnet. Bitte schließen Sie diese zuerst.";
+                AlertBox_HeaderText = "Warnung";
+            }
+
+            Alert confirmationBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+            confirmationBox.setHeaderText(AlertBox_HeaderText);
+            confirmationBox.setTitle(AlertBox_Title);
+            confirmationBox.showAndWait();
+
+            System.out.println("Export Tour: No tour has been selected");
+            return;
+        }
+
+        BufferedWriter bufferedWriter = null;
+        try {
+            if (!csvFile.exists()) {
+                csvFile.createNewFile();
+            }
+
+            String csvDelimeter = ";";
+            String tourString = currentTour.getName() + csvDelimeter + currentTour.getStart() + csvDelimeter + currentTour.getDestination() + csvDelimeter + currentTour.getTransportType().toString() + csvDelimeter + currentTour.getDestination();
+
+            FileWriter fileWriter = new FileWriter(csvFile);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(tourString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(bufferedWriter != null) bufferedWriter.close();
+            } catch (Exception ex) {
+                System.out.println("Error in closing the Buffered Writer" + ex);
+            }
+        }
     }
 
     public void onMenuFileQuitClicked(ActionEvent actionEvent) {

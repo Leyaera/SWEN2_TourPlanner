@@ -18,7 +18,7 @@ public class MapQuestService {
     private MapQuestService() {
         try {
             Properties properties = new Properties();
-            FileInputStream fileInputStream = new FileInputStream("MQ/src/main/java/com/glatzerkratzer/tourplanner/mq/MQ.properties");
+            FileInputStream fileInputStream = new FileInputStream("config.properties");
             properties.load(fileInputStream);
             this.KEY = properties.getProperty("mapquest.key");
         } catch (IOException e) {

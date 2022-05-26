@@ -4,6 +4,7 @@ import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
+import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -80,6 +81,10 @@ public class MainWindowViewModel {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void exportTour() {
+
     }
 
 }

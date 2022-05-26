@@ -18,7 +18,7 @@ public class DatabaseService implements DatabaseServiceInterface {
     private DatabaseService() {
         try {
             Properties properties = new Properties();
-            FileInputStream fileInputStream = new FileInputStream("DB/src/main/java/com/glatzerkratzer/tourplanner/database/DBconfig.properties");
+            FileInputStream fileInputStream = new FileInputStream("config.properties");
             properties.load(fileInputStream);
             this.DRIVER = properties.getProperty("jdbc.driverClassName");
             this.DB_URL = properties.getProperty("jdbc.url");

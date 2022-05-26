@@ -27,6 +27,13 @@
                         </ImageView>
                     </graphic>
                 </MenuItem>
+                <MenuItem fx:id="menuTourExport" text="%Menu_Tour_Export" onAction="#onExportClicked">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/menu_export.png"/>
+                        </ImageView>
+                    </graphic>
+                </MenuItem>
                 <SeparatorMenuItem  />
                 <MenuItem fx:id="menuFileQuit" text="%Menu_File_Quit" onAction="#onMenuFileQuitClicked"/>
             </items>
