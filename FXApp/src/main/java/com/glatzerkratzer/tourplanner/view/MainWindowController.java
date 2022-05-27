@@ -12,10 +12,8 @@ import javafx.scene.control.MenuBar;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.channels.Channel;
 import java.util.List;
 import java.util.Locale;
 
@@ -127,32 +125,7 @@ public class MainWindowController {
         fileChooser.getExtensionFilters().add(extensionFilter);
         File csvFile = fileChooser.showSaveDialog(null);
 
-        boolean csvFileIsLocked = !csvFile.renameTo(csvFile);
-        if (csvFileIsLocked) {
-            String AlertBox_Title = "";
-            String AlertBox_ContentText ="";
-            String AlertBox_HeaderText = "";
-
-            if (locale.toString().equals("en")) {
-                AlertBox_Title = "Export Tour";
-                AlertBox_ContentText = "The selected file is already opened in the background. Please close file first.";
-                AlertBox_HeaderText = "Warning";
-            }
-
-            if (locale.toString().equals("de")) {
-                AlertBox_Title = "Tour exportieren";
-                AlertBox_ContentText = "Die ausgewählte Datei ist im Hintergrund geöffnet. Bitte schließen Sie diese zuerst.";
-                AlertBox_HeaderText = "Warnung";
-            }
-
-            Alert confirmationBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
-            confirmationBox.setHeaderText(AlertBox_HeaderText);
-            confirmationBox.setTitle(AlertBox_Title);
-            confirmationBox.showAndWait();
-
-            System.out.println("Export Tour: No tour has been selected");
-            return;
-        }
+        isFileLocked(csvFile);
 
         BufferedWriter bufferedWriter = null;
         try {
@@ -252,5 +225,51 @@ public class MainWindowController {
         warningBox.setTitle(AlertBox_Title);
         warningBox.setHeaderText(AlertBox_HeaderText);
         warningBox.showAndWait();
+    }
+
+    public void isFileLocked(File file) {
+        boolean fileIsLocked = !file.renameTo(file);
+        Channel channel = null;
+
+        try {
+            channel = new RandomAccessFile(file, "rw").getChannel();
+            fileIsLocked = false;
+        } catch (Exception ex){
+            fileIsLocked = true;
+        } finally {
+            if(channel != null) {
+                try {
+                    channel.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (fileIsLocked) {
+            String AlertBox_Title = "";
+            String AlertBox_ContentText ="";
+            String AlertBox_HeaderText = "";
+
+            if (locale.toString().equals("en")) {
+                AlertBox_Title = "Export Tour";
+                AlertBox_ContentText = "The selected file is already opened in the background. Please close file first.";
+                AlertBox_HeaderText = "Warning";
+            }
+
+            if (locale.toString().equals("de")) {
+                AlertBox_Title = "Tour exportieren";
+                AlertBox_ContentText = "Die ausgewählte Datei ist im Hintergrund geöffnet. Bitte schließen Sie diese zuerst.";
+                AlertBox_HeaderText = "Warnung";
+            }
+
+            Alert confirmationBox = new Alert(Alert.AlertType.WARNING, AlertBox_ContentText);
+            confirmationBox.setHeaderText(AlertBox_HeaderText);
+            confirmationBox.setTitle(AlertBox_Title);
+            confirmationBox.showAndWait();
+
+            System.out.println("Export Tour: No tour has been selected");
+            return;
+        }
     }
 }
