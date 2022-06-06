@@ -1,6 +1,6 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
-import com.glatzerkratzer.tourplanner.dal.DAL;
+import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -22,7 +22,7 @@ public class TourOverviewViewModel {
 
     public TourOverviewViewModel(DownloadViewModel downloadViewModel)
     {
-        List<TourItem> tourItems = DAL.getInstance().tourDao().getAll();
+        List<TourItem> tourItems = BL.getInstance().getDall().getAllTours();
         setTours( tourItems );
         this.downloadViewModel = downloadViewModel;
     }
@@ -60,17 +60,17 @@ public class TourOverviewViewModel {
         if (currentListSize > 0) {
             newId = observableTourItems.get(currentListSize - 1).getId();
         }
-        var tours = DAL.getInstance().tourDao().getLatestEntries(newId);
+        var tours = BL.getInstance().getDall().getLatestTourEntries(newId);
         observableTourItems.addAll(tours);
     }
 
     public void deleteTour(TourItem tourItem) {
-        DAL.getInstance().tourDao().delete(tourItem);
+        BL.getInstance().getDall().deleteTour(tourItem);
         observableTourItems.remove(tourItem);
     }
 
     public boolean addTour(TourItem tourItem) {
-        DAL.getInstance().tourDao().add(tourItem);
+        BL.getInstance().getDall().addNewTour(tourItem);
         return true;
     }
 
@@ -86,7 +86,7 @@ public class TourOverviewViewModel {
 
     public boolean duplicateExists(TourItem tourItem) {
         if (tourItem.getName().contains("_copy")) { return true; }
-        if (DAL.getInstance().tourDao().getTourItemIdByName(tourItem.getName() + "_copy") > 0) { return true; }
+        if (BL.getInstance().getDall().getTourIdByName(tourItem.getName() + "_copy") > 0) { return true; };
         return false;
     }
 }

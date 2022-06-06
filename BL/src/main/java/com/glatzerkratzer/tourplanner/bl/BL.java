@@ -1,21 +1,34 @@
 package com.glatzerkratzer.tourplanner.bl;
 
-import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
+import com.glatzerkratzer.tourplanner.model.TransportType;
+import com.glatzerkratzer.tourplanner.mq.MapQuestService;
+import lombok.Getter;
+import org.json.JSONObject;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.IOException;
 
+
+@Getter
 public class BL {
-    public List<TourItem> findMatchingTours(String searchText) {
-        var tours = DAL.getInstance().tourDao().getAll();
-        if (searchText==null || searchText.isEmpty()) {
-            return tours;
-        }
-        return tours.stream()
-                .filter(t->t.getName().toLowerCase().contains(searchText.toLowerCase()))
-                .collect(Collectors.toList());
-    }
+
+    //
+    // TOUR BL
+    //
+    DALL Dall = new DALL();
+
+
+    //
+    // MAP QUEST BL
+    //
+    MQL Mql = new MQL();
+
+    //
+    // TOUR LOGS BL
+    //
+    // TLL Tll = new TLL();
+
+
 
     //
     // Singleton-Pattern for BL with early-binding

@@ -33,11 +33,12 @@ public class MapQuestService {
         return mapQuestService;
     }
 
-    public JSONObject getRoute(String start, String destination) throws IOException, InterruptedException {
+    public JSONObject getRoute(String start, String destination, String transportType) throws IOException, InterruptedException {
         start = start.replace(" ", "%20");
         destination = destination.replace(" ", "%20");
+        transportType = getTransportType(transportType);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://www.mapquestapi.com/directions/v2/route?key=" + KEY + "&from=" + start + "&to=" + destination))
+                .uri(URI.create("http://www.mapquestapi.com/directions/v2/route?key=" + KEY + "&from=" + start + "&to=" + destination + "&unit=k" + "&routeType=" + transportType))
                 .header("Content-Type", "application/json")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -49,6 +50,15 @@ public class MapQuestService {
             jsonObject = jsonArray.getJSONObject(i);
         }
         return jsonObject;
+    }
+
+    public String getTransportType(String transportType) {
+        if (transportType.equals("VACATION")) transportType = "fastest";
+        if (transportType.equals("BIKE")) transportType = "bicycle";
+        if (transportType.equals("HIKE")) transportType = "pedestrian";
+        if (transportType.equals("RUNNING")) transportType = "pedestrian";
+
+        return transportType;
     }
 
     public String getDurationOf(JSONObject route) {

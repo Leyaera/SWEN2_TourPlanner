@@ -1,6 +1,6 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
-import com.glatzerkratzer.tourplanner.dal.DAL;
+import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
 import javafx.collections.FXCollections;
@@ -16,14 +16,11 @@ public class AddTourViewModel {
     }
 
     public void addTour() {
-        DAL.getInstance().tourDao().add(tourItem);
+        BL.getInstance().getDall().addNewTour(tourItem);
     }
 
     public boolean tourExists() {
-        if (DAL.getInstance().tourDao().getTourItemIdByName(tourItem.getName()) > 0) {
-            return true;
-        }
-        return false;
+        return BL.getInstance().getDall().tourExists(tourItem);
     }
 
     public ObservableList<String> getChoiceBoxItems(Locale locale) {

@@ -16,10 +16,8 @@ public class TourItemDao implements Dao<TourItem> {
             Statement s = conn.createStatement();
 
             String createTours = "CREATE TABLE IF NOT EXISTS tours(id SERIAL UNIQUE, name VARCHAR(25) UNIQUE NOT NULL, description VARCHAR(1024), start VARCHAR(25) NOT NULL, destination VARCHAR(25) NOT NULL, transporttype VARCHAR(10) NOT NULL, PRIMARY KEY (id))";
-            String createLogs = "CREATE TABLE IF NOT EXISTS logs(id SERIAL UNIQUE, tourId INTEGER NOT NULL, action VARCHAR(25) NOT NULL, date DATE NOT NULL, time TIMESTAMP NOT NULL, PRIMARY KEY(id))";
 
             s.addBatch(createTours);
-            s.addBatch(createLogs);
 
             s.executeBatch();
         } catch (SQLException e) {
@@ -96,7 +94,7 @@ public class TourItemDao implements Dao<TourItem> {
     }
 
     @Override
-    public int getTourItemIdByName(String name) {
+    public int getIdByName(String name) {
         int tourId = 0;
         try {
             Connection connection = DatabaseService.getDatabaseService().getConnection();
@@ -162,33 +160,6 @@ public class TourItemDao implements Dao<TourItem> {
             }
             return;
         }
-    }
-
-    @Override
-    public void updateByName(String nameBeforeUpdate, TourItem tourItem) {
-        if (!nameBeforeUpdate.isBlank()) {
-            try {
-                Connection connection = DatabaseService.getDatabaseService().getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tours SET name = ?, description = ?, start = ?, destination = ?, transporttype = ? WHERE name = ?");
-                preparedStatement.setString(1, tourItem.getName());
-                preparedStatement.setString(2, tourItem.getDescription());
-                preparedStatement.setString(3, tourItem.getStart());
-                preparedStatement.setString(4, tourItem.getDestination());
-                preparedStatement.setString(5, tourItem.getTransportType().toString());
-                preparedStatement.setString(6, nameBeforeUpdate);
-
-                preparedStatement.executeUpdate();
-                preparedStatement.close();
-                connection.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return;
-        }
-
-        // If Tour(ID) does not already exist --> add new Tour
-        add(tourItem);
     }
 
     @Override

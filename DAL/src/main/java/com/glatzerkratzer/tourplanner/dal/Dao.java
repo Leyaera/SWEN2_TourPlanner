@@ -14,15 +14,13 @@ public interface Dao<T> {
 
     List<T> getAll();
 
-    List<TourItem> getLatestEntries(int lastTourIdInCurrentList);
+    List<T> getLatestEntries(int lastTourIdInCurrentList);
 
-    int getTourItemIdByName(String name);
+    int getIdByName(String name);
 
     void add(T t);
 
     void updateById(int tourId, T t);
-
-    void updateByName(String nameBeforeUpdate, T t);
 
     void delete(T t);
 }

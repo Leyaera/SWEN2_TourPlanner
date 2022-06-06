@@ -1,7 +1,6 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
 import com.glatzerkratzer.tourplanner.bl.BL;
-import com.glatzerkratzer.tourplanner.dal.DAL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
 import javafx.stage.FileChooser;
@@ -38,15 +37,13 @@ public class MainWindowViewModel {
     }
 
     private void searchTours(String searchString) {
-        var tours = BL.getInstance().findMatchingTours( searchString );
+        var tours = BL.getInstance().getDall().findMatchingTours(searchString);
+        //var tours = BL.getInstance().findMatchingTours( searchString );
         tourOverviewViewModel.setTours(tours);
     }
 
     public boolean tourExists(TourItem tourItem) {
-        if (DAL.getInstance().tourDao().getTourItemIdByName(tourItem.getName()) > 0) {
-            return true;
-        }
-        return false;
+        return BL.getInstance().getDall().tourExists(tourItem);
     }
 
     public List importFile(File file) {
@@ -75,7 +72,7 @@ public class MainWindowViewModel {
                 tourItems.add(tourItem);
             }
             for (var tour : tourItems) {
-                DAL.getInstance().tourDao().add(tour);
+                BL.getInstance().getDall().addNewTour(tour);
             }
         } catch (IOException e) {
             e.printStackTrace();

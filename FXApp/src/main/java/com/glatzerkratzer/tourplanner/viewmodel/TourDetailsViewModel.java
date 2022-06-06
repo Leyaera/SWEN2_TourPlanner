@@ -1,7 +1,8 @@
 package com.glatzerkratzer.tourplanner.viewmodel;
 
+import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
-import com.glatzerkratzer.tourplanner.mq.MapQuestService;
+import com.glatzerkratzer.tourplanner.model.TransportType;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -56,30 +57,7 @@ public class TourDetailsViewModel {
         isInitValue = false;
     }
 
-    private void updateTourModel() {
-        //if( !isInitValue )
-            //DAL.getInstance().tourDao().update(tourItemModel, Arrays.asList(tourItemModel.getId(), this.tourDetailsDescriptionViewModel.getName(), this.tourDetailsDescriptionViewModel.getDescription(), this.tourDetailsDescriptionViewModel.getStart(), this.tourDetailsDescriptionViewModel.getDestination(), this.tourDetailsDescriptionViewModel.getTransportType()));
-    }
-
     public void getMissingValues(TourItem tourItem) {
-        JSONObject tourJson = null;
-        String mapPath = "";
-
-        try {
-            tourJson = MapQuestService.getMapQuestService().getRoute(tourItem.getStart(), tourItem.getDestination());
-            mapPath = MapQuestService.getMapQuestService().getImageURLOf(tourJson);
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        if (tourJson == null || mapPath.isBlank()) {
-            System.out.println("tourJson or mapPath in getMissingValues in TourDetailsViewModel is NULL");
-            return;
-        }
-
-        tourItem.setDistance(MapQuestService.getMapQuestService().getDistanceOf(tourJson));
-        tourItem.setDuration(MapQuestService.getMapQuestService().getDurationOf(tourJson));
-        tourItem.setMapPath(mapPath);
+        BL.getInstance().getMql().getMissingValues(tourItem);
     }
-
 }
