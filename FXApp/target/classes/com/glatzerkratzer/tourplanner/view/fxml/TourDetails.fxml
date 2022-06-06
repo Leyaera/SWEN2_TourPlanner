@@ -30,25 +30,6 @@
                 <content>
                     <fx:include fx:id="tourDetailsMap" source ="TourDetailsMap.fxml"/>
                 </content>
-                <!--
-                <Pane>
-                    <children>
-                        <ImageView>
-                            <image>
-                                <Image url="@../default_map.jpg" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </Pane>
-                -->
-            </Tab>
-            <Tab fx:id="tourDetails_tab_highlights" text="%TourDetails_Tab_Highlights">
-                <graphic>
-                    <ImageView>
-                        <Image url="@../img/icons/highlights.png"/>
-                    </ImageView>
-                </graphic>
-                <TextArea/>
             </Tab>
             <Tab fx:id="tourDetails_tab_log" text="%TourDetails_Tab_Log">
                 <graphic>
@@ -56,7 +37,9 @@
                         <Image url="@../img/icons/logs.png"/>
                     </ImageView>
                 </graphic>
-                <TextArea/>
+                <content>
+                    <fx:include fx:id="tourDetailsLogs" source ="TourDetailsLogs.fxml"/>
+                </content>
             </Tab>
             <Tab fx:id="tourDetails_tab_pdf" text="%TourDetails_Tab_PDF">
                 <graphic>

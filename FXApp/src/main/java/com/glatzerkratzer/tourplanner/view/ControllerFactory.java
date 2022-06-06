@@ -15,6 +15,7 @@ public class ControllerFactory {
     private final AddTourViewModel addTourViewModel;
     private final EditTourViewModel editTourViewModel;
     private final DownloadViewModel downloadViewModel;
+    private final TourDetailsLogsViewModel tourDetailsLogsViewModel;
 
     @Getter private DownloadController downloadController;
     @Getter private AddTourController addTourController;
@@ -25,6 +26,7 @@ public class ControllerFactory {
     @Getter private TourDetailsDescriptionController tourDetailsDescriptionController;
     @Getter private TourDetailsMapController tourDetailsMapController;
     @Getter private TourOverviewController tourOverviewController;
+    @Getter private TourDetailsLogsController tourDetailsLogsController;
 
     public ControllerFactory() {
         searchBarViewModel = new SearchBarViewModel();
@@ -32,7 +34,8 @@ public class ControllerFactory {
         tourOverviewViewModel = new TourOverviewViewModel(downloadViewModel);
         tourDetailsDescriptionViewModel = new TourDetailsDescriptionViewModel();
         tourDetailsMapViewModel = new TourDetailsMapViewModel();
-        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel, tourDetailsMapViewModel);
+        tourDetailsLogsViewModel = new TourDetailsLogsViewModel();
+        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel, tourDetailsMapViewModel, tourDetailsLogsViewModel);
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourOverviewViewModel, tourDetailsViewModel);
         addTourViewModel = new AddTourViewModel();
         editTourViewModel = new EditTourViewModel();
@@ -61,7 +64,11 @@ public class ControllerFactory {
         } else if (controllerClass == TourDetailsMapController.class) {
             tourDetailsMapController = new TourDetailsMapController(tourDetailsMapViewModel, locale);
             return tourDetailsMapController;
-        } else if (controllerClass == AddTourController.class) {
+        } else if (controllerClass == TourDetailsLogsController.class) {
+            tourDetailsLogsController = new TourDetailsLogsController(tourDetailsLogsViewModel, locale);
+            return tourDetailsLogsController;
+        }
+        else if (controllerClass == AddTourController.class) {
             addTourController = new AddTourController(addTourViewModel, locale);
             return addTourController;
         } else if (controllerClass == EditTourController.class) {

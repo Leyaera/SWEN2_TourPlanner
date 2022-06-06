@@ -11,12 +11,14 @@ public class TourDetailsViewModel {
     private TourItem tourItemModel;
     private TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
     private TourDetailsMapViewModel tourDetailsMapViewModel;
+    private TourDetailsLogsViewModel tourDetailsLogsViewModel;
     private volatile boolean isInitValue = false;
 
 
-    public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel, TourDetailsMapViewModel tourDetailsMapViewModel) {
+    public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel, TourDetailsMapViewModel tourDetailsMapViewModel, TourDetailsLogsViewModel tourDetailsLogsViewModel) {
         this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
         this.tourDetailsMapViewModel = tourDetailsMapViewModel;
+        this.tourDetailsLogsViewModel = tourDetailsLogsViewModel;
     }
 
 

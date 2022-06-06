@@ -11,6 +11,7 @@ public class TourDetailsController {
     @FXML private TourDetailsDescriptionController tourDetailsDescriptionController;
     @FXML private TourDetailsMapController tourDetailsMapController;
     @FXML private DownloadController downloadController;
+    @FXML private TourDetailsLogsController tourDetailsLogsController;
     @FXML private MainWindowController mainWindowController;
 
     @FXML public TextArea tourDescriptionText;

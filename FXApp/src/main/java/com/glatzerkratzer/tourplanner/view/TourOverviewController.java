@@ -126,7 +126,7 @@ public class TourOverviewController {
 
         TourItem selectedTour = null;
         if (location.equals("EditTour.fxml")) {
-            EditTourController editTourController = fxmlDependencyInjection.getController();
+            EditTourController editTourController = ControllerFactory.getInstance().getEditTourController();
             selectedTour = tourItemList.getSelectionModel().getSelectedItem();
             if (selectedTour != null) { editTourController.initData(selectedTour); }
         }
