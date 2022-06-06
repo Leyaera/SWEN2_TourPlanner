@@ -18,7 +18,7 @@ public class MapQuestService {
     private MapQuestService() {
         try {
             Properties properties = new Properties();
-            FileInputStream fileInputStream = new FileInputStream("config.properties");
+            FileInputStream fileInputStream = new FileInputStream("D:\\FH\\04_Semester_SS2022\\SWEN2\\SWEN2_TourPlanner\\config.properties");
             properties.load(fileInputStream);
             this.KEY = properties.getProperty("mapquest.key");
         } catch (IOException e) {

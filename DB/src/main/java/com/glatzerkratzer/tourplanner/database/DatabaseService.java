@@ -18,7 +18,7 @@ public class DatabaseService implements DatabaseServiceInterface {
     private DatabaseService() {
         try {
             Properties properties = new Properties();
-            FileInputStream fileInputStream = new FileInputStream("config.properties");
+            FileInputStream fileInputStream = new FileInputStream("D:\\FH\\04_Semester_SS2022\\SWEN2\\SWEN2_TourPlanner\\config.properties");
             properties.load(fileInputStream);
             this.DRIVER = properties.getProperty("jdbc.driverClassName");
             this.DB_URL = properties.getProperty("jdbc.url");

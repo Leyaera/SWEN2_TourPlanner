@@ -13,8 +13,5 @@
           fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsLogsController"
           prefHeight="400.0" prefWidth="600.0">
 
-    <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
-
-    </SplitPane>
 
 </AnchorPane>

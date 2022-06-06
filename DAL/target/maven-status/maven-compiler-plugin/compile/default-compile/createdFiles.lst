@@ -1,5 +1,5 @@
-com\glatzerkratzer\tourplanner\dal\Dao.class
 com\glatzerkratzer\tourplanner\model\TourItem.class
 com\glatzerkratzer\tourplanner\model\TransportType.class
-com\glatzerkratzer\tourplanner\dal\TourItemDao.class
 com\glatzerkratzer\tourplanner\dal\DAL.class
+com\glatzerkratzer\tourplanner\dal\Dao.class
+com\glatzerkratzer\tourplanner\dal\TourItemDao.class
