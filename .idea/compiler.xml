@@ -7,12 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MQ" />
-        <module name="logger" />
         <module name="BL" />
+        <module name="MQ" />
         <module name="FXApp" />
         <module name="DAL" />
         <module name="DB" />
+        <module name="logger" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

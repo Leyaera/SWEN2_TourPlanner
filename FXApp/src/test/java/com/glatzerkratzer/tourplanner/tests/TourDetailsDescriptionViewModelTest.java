@@ -45,5 +45,4 @@ class TourDetailsDescriptionViewModelTest {
         testDescriptionViewModel.setDuration("10");
         assertEquals(testDescriptionViewModel.getDuration(), "| 10\n\n");
     }
-
 }
