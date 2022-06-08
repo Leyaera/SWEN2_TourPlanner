@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.glatzerkratzer.tourplanner.tests.DALTest" time="0.173" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.glatzerkratzer.tourplanner.tests.DALTest" time="0.201" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2021.2.2"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -59,7 +59,7 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testTourDaoIsNotNull" classname="com.glatzerkratzer.tourplanner.tests.DALTest" time="0.158"/>
+  <testcase name="testTourDaoIsNotNull" classname="com.glatzerkratzer.tourplanner.tests.DALTest" time="0.184"/>
   <testcase name="testTourLogDaoIsNotNull" classname="com.glatzerkratzer.tourplanner.tests.DALTest" time="0"/>
   <testcase name="testGetInstanceIsNotNull" classname="com.glatzerkratzer.tourplanner.tests.DALTest" time="0"/>
 </testsuite>

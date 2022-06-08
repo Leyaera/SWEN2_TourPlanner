@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface Dao<T> {
 
-    List<T> getAll();
+    List<T> getAll(int id);
 
     List<T> getLatestEntries(int lastTourIdInCurrentList);
 

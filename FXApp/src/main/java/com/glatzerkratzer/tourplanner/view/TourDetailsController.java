@@ -13,6 +13,7 @@ public class TourDetailsController {
     @FXML private DownloadController downloadController;
     @FXML private TourDetailsLogsController tourDetailsLogsController;
     @FXML private MainWindowController mainWindowController;
+    @FXML private LogSearchBarController logSearchBarController;
 
     @FXML public TextArea tourDescriptionText;
 

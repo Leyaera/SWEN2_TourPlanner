@@ -11,19 +11,22 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 <?import java.net.URL?>
-<TextFlow xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsMapController"
           prefHeight="400.0" prefWidth="600.0">
-
-    <Text fx:id="tourMapName"/>
-    <Text fx:id="tourMapTransportType"/>
-    <Text fx:id="tourMapDistance"/>
-    <Text fx:id="tourMapDuration"/>
-    <Text fx:id="tourMapStartTag" />
-    <Text fx:id="tourMapStart"/>
-    <Text fx:id="tourMapDestinationTag" />
-    <Text fx:id="tourMapDestination"/>
+    <content>
+        <TextFlow>
+            <Text fx:id="tourMapName"/>
+            <Text fx:id="tourMapTransportType"/>
+            <Text fx:id="tourMapDistance"/>
+            <Text fx:id="tourMapDuration"/>
+            <Text fx:id="tourMapStartTag" />
+            <Text fx:id="tourMapStart"/>
+            <Text fx:id="tourMapDestinationTag" />
+            <Text fx:id="tourMapDestination"/>
+        </TextFlow>
+    </content>
 
     <stylesheets>
         <URL value="@../css/tourMapDescriptionStyle.css" />
@@ -31,4 +34,4 @@
 
     <ImageView fx:id="tourMapImageView"/>
 
-</TextFlow>
+</ScrollPane>

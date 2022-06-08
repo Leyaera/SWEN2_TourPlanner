@@ -15,7 +15,7 @@ public class TourLogDao implements Dao<TourLog>{
             Connection conn = DatabaseService.getDatabaseService().getConnection();
             Statement s = conn.createStatement();
 
-            String createLogs = "CREATE TABLE IF NOT EXISTS logs(id SERIAL UNIQUE, tourId INTEGER NOT NULL, comment VARCHAR, difficulty INTEGER NOT NULL, duration VARCHAR NOT NULL, rating INTEGER NOT NULL, date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(id))";
+            String createLogs = "CREATE TABLE IF NOT EXISTS logs(id SERIAL UNIQUE, tourId INTEGER NOT NULL, comment VARCHAR, difficulty INTEGER NOT NULL, duration VARCHAR, rating INTEGER NOT NULL, date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(id))";
 
             s.addBatch(createLogs);
 
@@ -26,12 +26,13 @@ public class TourLogDao implements Dao<TourLog>{
     }
 
     @Override
-    public List<TourLog> getAll() {
+    public List<TourLog> getAll(int tourId) {
         List<TourLog> tourLogs = new ArrayList<>();
         try {
             Connection connection = DatabaseService.getDatabaseService().getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id, tourid, comment, difficulty, duration, rating, date_time FROM tours ORDER BY id DESC;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, tourid, comment, difficulty, duration, rating, date_time FROM logs WHERE tourid = ? ORDER BY id DESC;");
+            preparedStatement.setInt(1, tourId);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
                 tourLogs.add(new TourLog(
@@ -41,15 +42,19 @@ public class TourLogDao implements Dao<TourLog>{
                         resultSet.getInt(4),                                // difficulty
                         resultSet.getString(5),                             // duration
                         resultSet.getInt(6),                                // rating
-                        resultSet.getTimestamp(7).toString()                // date_time
+                        resultSet.getTimestamp(7)                           // date_time
                 ));
             }
-            statement.close();
+            preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return tourLogs;
+    }
+
+    public void getAllByTourId(int tourId) {
+
     }
 
     @Override
@@ -62,7 +67,7 @@ public class TourLogDao implements Dao<TourLog>{
         try {
 
             Connection connection = DatabaseService.getDatabaseService().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, tourid, comment, difficulty, duration, rating, date_time FROM logs WHERE id > ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT id, tourid, comment, difficulty, duration, rating, date_trunc('second', date_time)  FROM logs WHERE id > ?");
             preparedStatement.setInt(1, lastLogIdInCurrentList);
             //Statement statement = connection.createStatement();
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -76,7 +81,7 @@ public class TourLogDao implements Dao<TourLog>{
                         resultSet.getInt(4),                                // difficulty
                         resultSet.getString(5),                             // duration
                         resultSet.getInt(6),                                // rating
-                        resultSet.getTimestamp(7).toString()                // date_time
+                        resultSet.getTimestamp(7)                // date_time
                 );
                 latestTourLogs.add(newTourLog);
             }
@@ -99,7 +104,7 @@ public class TourLogDao implements Dao<TourLog>{
         try {
             Connection connection = DatabaseService.getDatabaseService().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO logs(tourid, comment, difficulty, duration, rating) VALUES(?, ?, ?, ?, ?);");
-            preparedStatement.setInt(1, tourLog.getTourid());
+            preparedStatement.setInt(1, tourLog.getTourId());
             preparedStatement.setString(2, tourLog.getComment());
             preparedStatement.setInt(3, tourLog.getDifficulty());
             preparedStatement.setString(4, tourLog.getDuration());

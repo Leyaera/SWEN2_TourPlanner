@@ -16,6 +16,9 @@ public class ControllerFactory {
     private final EditTourViewModel editTourViewModel;
     private final DownloadViewModel downloadViewModel;
     private final TourDetailsLogsViewModel tourDetailsLogsViewModel;
+    private final LogSearchBarViewModel logSearchBarViewModel;
+    private final AddLogViewModel addLogViewModel;
+    private final EditLogViewModel editLogViewModel;
 
     @Getter private DownloadController downloadController;
     @Getter private AddTourController addTourController;
@@ -27,18 +30,24 @@ public class ControllerFactory {
     @Getter private TourDetailsMapController tourDetailsMapController;
     @Getter private TourOverviewController tourOverviewController;
     @Getter private TourDetailsLogsController tourDetailsLogsController;
+    @Getter private LogSearchBarController logSearchBarController;
+    @Getter private AddLogController addLogController;
+    @Getter private EditLogController editLogController;
 
     public ControllerFactory() {
         searchBarViewModel = new SearchBarViewModel();
+        logSearchBarViewModel = new LogSearchBarViewModel();
         downloadViewModel = new DownloadViewModel();
         tourOverviewViewModel = new TourOverviewViewModel(downloadViewModel);
         tourDetailsDescriptionViewModel = new TourDetailsDescriptionViewModel();
         tourDetailsMapViewModel = new TourDetailsMapViewModel();
-        tourDetailsLogsViewModel = new TourDetailsLogsViewModel();
-        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel, tourDetailsMapViewModel, tourDetailsLogsViewModel);
+        tourDetailsLogsViewModel = new TourDetailsLogsViewModel(tourOverviewViewModel);
+        tourDetailsViewModel = new TourDetailsViewModel(tourDetailsDescriptionViewModel, tourDetailsMapViewModel, tourDetailsLogsViewModel, logSearchBarViewModel);
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourOverviewViewModel, tourDetailsViewModel);
         addTourViewModel = new AddTourViewModel();
         editTourViewModel = new EditTourViewModel();
+        addLogViewModel = new AddLogViewModel();
+        editLogViewModel = new EditLogViewModel();
     }
 
     //
@@ -67,8 +76,7 @@ public class ControllerFactory {
         } else if (controllerClass == TourDetailsLogsController.class) {
             tourDetailsLogsController = new TourDetailsLogsController(tourDetailsLogsViewModel, locale);
             return tourDetailsLogsController;
-        }
-        else if (controllerClass == AddTourController.class) {
+        } else if (controllerClass == AddTourController.class) {
             addTourController = new AddTourController(addTourViewModel, locale);
             return addTourController;
         } else if (controllerClass == EditTourController.class) {
@@ -77,6 +85,15 @@ public class ControllerFactory {
         } else if (controllerClass == DownloadController.class){
             downloadController = new DownloadController(downloadViewModel, locale);
             return downloadController;
+        } else if (controllerClass == LogSearchBarController.class){
+            logSearchBarController = new LogSearchBarController(logSearchBarViewModel, locale);
+            return logSearchBarController;
+        } else if (controllerClass == AddLogController.class){
+            addLogController = new AddLogController(addLogViewModel, locale);
+            return addLogController;
+        } else if (controllerClass == EditLogController.class){
+            editLogController = new EditLogController(editLogViewModel, locale);
+            return editLogController;
         }
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }

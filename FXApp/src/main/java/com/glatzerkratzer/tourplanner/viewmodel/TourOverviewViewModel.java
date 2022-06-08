@@ -2,6 +2,7 @@ package com.glatzerkratzer.tourplanner.viewmodel;
 
 import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
+import com.glatzerkratzer.tourplanner.view.ControllerFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +23,7 @@ public class TourOverviewViewModel {
 
     public TourOverviewViewModel(DownloadViewModel downloadViewModel)
     {
-        List<TourItem> tourItems = BL.getInstance().getDall().getAllTours();
+        List<TourItem> tourItems = BL.getInstance().getTourBL().getAllTours();
         setTours( tourItems );
         this.downloadViewModel = downloadViewModel;
     }
@@ -47,6 +48,13 @@ public class TourOverviewViewModel {
         for ( var listener : listeners ) {
             listener.changeSelection(newValue);
         }
+
+        TourDetailsLogsViewModel tourDetailsLogsViewModel = ControllerFactory.getInstance().getTourDetailsLogsController().getTourDetailsLogsViewModel();
+        if (newValue == null) {
+            tourDetailsLogsViewModel.SetSelectedLog(0);
+            return;
+        }
+        tourDetailsLogsViewModel.SetSelectedLog(newValue.getId());
     }
 
     public void setTours(List<TourItem> tourItems) {
@@ -60,17 +68,17 @@ public class TourOverviewViewModel {
         if (currentListSize > 0) {
             newId = observableTourItems.get(currentListSize - 1).getId();
         }
-        var tours = BL.getInstance().getDall().getLatestTourEntries(newId);
+        var tours = BL.getInstance().getTourBL().getLatestTourEntries(newId);
         observableTourItems.addAll(tours);
     }
 
     public void deleteTour(TourItem tourItem) {
-        BL.getInstance().getDall().deleteTour(tourItem);
+        BL.getInstance().getTourBL().deleteTour(tourItem);
         observableTourItems.remove(tourItem);
     }
 
     public boolean addTour(TourItem tourItem) {
-        BL.getInstance().getDall().addNewTour(tourItem);
+        BL.getInstance().getTourBL().addNewTour(tourItem);
         return true;
     }
 
@@ -86,7 +94,7 @@ public class TourOverviewViewModel {
 
     public boolean duplicateExists(TourItem tourItem) {
         if (tourItem.getName().contains("_copy")) { return true; }
-        if (BL.getInstance().getDall().getTourIdByName(tourItem.getName() + "_copy") > 0) { return true; };
+        if (BL.getInstance().getTourBL().getTourIdByName(tourItem.getName() + "_copy") > 0) { return true; };
         return false;
     }
 }

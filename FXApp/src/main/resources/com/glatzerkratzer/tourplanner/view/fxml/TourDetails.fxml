@@ -10,48 +10,54 @@
       fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsController">
 
     <SplitPane dividerPositions="0.5" orientation="VERTICAL" VBox.vgrow="ALWAYS">
-        <TabPane tabClosingPolicy="UNAVAILABLE">
-            <Tab fx:id="tourDetails_tab_description" text="%TourDetails_Tab_Description">
-                <graphic>
-                    <ImageView>
-                        <Image url="@../img/icons/description.png"/>
-                    </ImageView>
-                </graphic>
-                <content>
-                    <fx:include fx:id="tourDetailsDescription" source="TourDetailsDescription.fxml"/>
-                </content>
-            </Tab>
-            <Tab fx:id="tourDetails_tab_map" text="%TourDetails_Tab_Map">
-                <graphic>
-                    <ImageView>
-                        <Image url="@../img/icons/map.png"/>
-                    </ImageView>
-                </graphic>
-                <content>
-                    <fx:include fx:id="tourDetailsMap" source ="TourDetailsMap.fxml"/>
-                </content>
-            </Tab>
-            <Tab fx:id="tourDetails_tab_log" text="%TourDetails_Tab_Log">
-                <graphic>
-                    <ImageView>
-                        <Image url="@../img/icons/logs.png"/>
-                    </ImageView>
-                </graphic>
-                <content>
-                    <fx:include fx:id="tourDetailsLogs" source ="TourDetailsLogs.fxml"/>
-                </content>
-            </Tab>
-            <Tab fx:id="tourDetails_tab_pdf" text="%TourDetails_Tab_PDF">
-                <graphic>
-                    <ImageView>
-                        <Image url="@../img/icons/pdf.png"/>
-                    </ImageView>
-                </graphic>
-                <content>
-                    <fx:include fx:id="Download" source="Download.fxml"/>
-                </content>
-            </Tab>
-        </TabPane>
+        <HBox VBox.vgrow="ALWAYS">
+            <TabPane tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+                <Tab fx:id="tourDetails_tab_description" text="%TourDetails_Tab_Description">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/description.png"/>
+                        </ImageView>
+                    </graphic>
+                    <content>
+                        <fx:include fx:id="tourDetailsDescription" source="TourDetailsDescription.fxml"/>
+                    </content>
+                </Tab>
+                <Tab fx:id="tourDetails_tab_map" text="%TourDetails_Tab_Map">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/map.png"/>
+                        </ImageView>
+                    </graphic>
+                    <content>
+                        <fx:include fx:id="tourDetailsMap" source ="TourDetailsMap.fxml"/>
+                    </content>
+                </Tab>
+                <!--
+                <Tab fx:id="tourDetails_tab_log" text="%TourDetails_Tab_Log">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/logs.png"/>
+                        </ImageView>
+                    </graphic>
+                    <content>
+                        <fx:include fx:id="tourDetailsLogs" source ="TourDetailsLogs.fxml"/>
+                    </content>
+                </Tab>
+                -->
+                <Tab fx:id="tourDetails_tab_pdf" text="%TourDetails_Tab_PDF">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/icons/pdf.png"/>
+                        </ImageView>
+                    </graphic>
+                    <content>
+                        <fx:include fx:id="Download" source="Download.fxml"/>
+                    </content>
+                </Tab>
+            </TabPane>
+        </HBox>
+        <fx:include fx:id="tourDetailsLogs" source="TourDetailsLogs.fxml"/>
+
     </SplitPane>
     <stylesheets>
         <URL value="@../css/tourDetailsStyle.css" />

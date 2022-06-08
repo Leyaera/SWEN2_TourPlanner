@@ -16,11 +16,11 @@ public class AddTourViewModel {
     }
 
     public void addTour() {
-        BL.getInstance().getDall().addNewTour(tourItem);
+        BL.getInstance().getTourBL().addNewTour(tourItem);
     }
 
     public boolean tourExists() {
-        return BL.getInstance().getDall().tourExists(tourItem);
+        return BL.getInstance().getTourBL().tourExists(tourItem);
     }
 
     public ObservableList<String> getChoiceBoxItems(Locale locale) {

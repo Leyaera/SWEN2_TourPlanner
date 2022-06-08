@@ -31,11 +31,5 @@ public class SearchBarController {
         searchTextField.textProperty().bindBidirectional( searchBarViewModel.searchStringProperty() );
     }
 
-    /*public void onSearchButton(ActionEvent actionEvent) {
-        searchBarViewModel.doSearch();
-    }
-
-     */
-
     public void onKeyTypedSearch(KeyEvent keyEvent) { searchBarViewModel.doSearch(); }
 }

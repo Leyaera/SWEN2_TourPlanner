@@ -3,6 +3,7 @@ package com.glatzerkratzer.tourplanner.viewmodel;
 import com.glatzerkratzer.tourplanner.bl.BL;
 import com.glatzerkratzer.tourplanner.model.TourItem;
 import com.glatzerkratzer.tourplanner.model.TransportType;
+import com.glatzerkratzer.tourplanner.view.ControllerFactory;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -12,13 +13,16 @@ public class TourDetailsViewModel {
     private TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel;
     private TourDetailsMapViewModel tourDetailsMapViewModel;
     private TourDetailsLogsViewModel tourDetailsLogsViewModel;
+    private LogSearchBarViewModel logSearchBarViewModel;
     private volatile boolean isInitValue = false;
 
 
-    public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel, TourDetailsMapViewModel tourDetailsMapViewModel, TourDetailsLogsViewModel tourDetailsLogsViewModel) {
+    public TourDetailsViewModel(TourDetailsDescriptionViewModel tourDetailsDescriptionViewModel, TourDetailsMapViewModel tourDetailsMapViewModel, TourDetailsLogsViewModel tourDetailsLogsViewModel, LogSearchBarViewModel logSearchBarViewModel) {
         this.tourDetailsDescriptionViewModel = tourDetailsDescriptionViewModel;
         this.tourDetailsMapViewModel = tourDetailsMapViewModel;
         this.tourDetailsLogsViewModel = tourDetailsLogsViewModel;
+        this.logSearchBarViewModel = logSearchBarViewModel;
+        this.logSearchBarViewModel.addSearchListener(searchString->searchLogs(searchString));
     }
 
 
@@ -61,5 +65,10 @@ public class TourDetailsViewModel {
 
     public void getMissingValues(TourItem tourItem) {
         BL.getInstance().getMql().getMissingValues(tourItem);
+    }
+
+    private void searchLogs(String searchString) {
+        var logs = BL.getInstance().getLogBL().findMatchingLogs(searchString, ControllerFactory.getInstance().getTourOverviewController().tourItemList.getSelectionModel().getSelectedItem().getId());
+        tourDetailsLogsViewModel.setLogs(logs);
     }
 }

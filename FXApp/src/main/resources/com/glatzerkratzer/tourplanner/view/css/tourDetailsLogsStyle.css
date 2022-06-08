@@ -1,0 +1,19 @@
+#duplicateButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/copy.png');
+}
+
+#editButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/edit.png');
+}
+
+#removeButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/remove.png');
+}
+
+#addButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/add.png');
+}
+
+#refreshButton {
+    -fx-graphic: url('/com/glatzerkratzer/tourplanner/view/img/icons/refresh.png');
+}

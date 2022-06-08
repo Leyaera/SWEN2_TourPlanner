@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
+<?import javafx.scene.layout.BorderPane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.glatzerkratzer.tourplanner.view.TourOverviewController">
@@ -42,7 +43,7 @@
         </Button>
     </ToolBar>
     <fx:include fx:id="searchBar" source="SearchBar.fxml"/>
-    <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS"/>
+    <ListView fx:id="tourItemList" VBox.vgrow="ALWAYS" />
     <stylesheets>
         <URL value="@../css/tourOverviewStyle.css" />
     </stylesheets>

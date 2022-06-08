@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.glatzerkratzer.tourplanner.view.AddLogController"
+          hgap="10" vgap="10"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label fx:id="addLogHeader" text="%AddLog_Header"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="0"
+           GridPane.columnSpan="3"/>
+
+    <Label fx:id="addLogTourName" text="%AddTour_Name"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="1"/>
+    <Label fx:id="tourName"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="1"/>
+
+    <Label fx:id="addLogDuration" text="%AddLog_Duration"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="2"/>
+    <TextField fx:id="addLogDurationTextField"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="2" />
+    <Label fx:id="addLogDurationFormat" text ="%AddLog_DurationFormat"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="3"/>
+
+
+    <Label fx:id="addLogDifficulty" text="%AddLog_Difficulty"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="4" />
+    <ChoiceBox fx:id="addLogDifficultyChoiceBox"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="4"
+               GridPane.columnSpan="2" />
+    <Label fx:id="addLogDifficultyRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="4"/>
+
+    <Label fx:id="addLogRating" text="%AddLog_Rating"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="5" />
+    <ChoiceBox fx:id="addLogRatingChoiceBox"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="5"
+               GridPane.columnSpan="2" />
+    <Label fx:id="addLogRatingRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="5"/>
+
+    <Label fx:id="addLogComment" text="%AddLog_Comment"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="6"
+           GridPane.columnSpan="2" />
+    <TextArea fx:id="addLogCommentTextArea"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="7"
+              GridPane.columnSpan="2" />
+
+    <Label fx:id="inputRequired" text="%Input_Required"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="8" />
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1"
+          GridPane.rowIndex="8">
+        <Button fx:id="addLogCancelButton" text="%Cancel" onAction="#onAddLogCancelButton"/>
+        <Button fx:id="addLogOKButton" text="%OK" onAction="#onAddLogOKButton"/>
+    </HBox>
+
+
+
+    <stylesheets>
+        <URL value="@../css/addLogStyle.css" />
+    </stylesheets>
+</GridPane>
