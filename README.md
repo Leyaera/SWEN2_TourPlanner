@@ -50,7 +50,7 @@
 
 ### User-Interface Structure
 
-https://github.com/Leyaera/SWEN2_TourPlanner/ui_structure.jpg
+https://github.com/Leyaera/SWEN2_TourPlanner/blob/main/ui_structure.jpg
 
 ## Hand-In
 
