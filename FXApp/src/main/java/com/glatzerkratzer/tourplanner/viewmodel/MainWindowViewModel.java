@@ -37,13 +37,12 @@ public class MainWindowViewModel {
     }
 
     private void searchTours(String searchString) {
-        var tours = BL.getInstance().getDall().findMatchingTours(searchString);
-        //var tours = BL.getInstance().findMatchingTours( searchString );
+        var tours = BL.getInstance().getTourBL().findMatchingTours(searchString);
         tourOverviewViewModel.setTours(tours);
     }
 
     public boolean tourExists(TourItem tourItem) {
-        return BL.getInstance().getDall().tourExists(tourItem);
+        return BL.getInstance().getTourBL().tourExists(tourItem);
     }
 
     public List importFile(File file) {
@@ -72,7 +71,7 @@ public class MainWindowViewModel {
                 tourItems.add(tourItem);
             }
             for (var tour : tourItems) {
-                BL.getInstance().getDall().addNewTour(tour);
+                BL.getInstance().getTourBL().addNewTour(tour);
             }
         } catch (IOException e) {
             e.printStackTrace();

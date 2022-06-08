@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.glatzerkratzer.tourplanner.view.EditLogController"
+          hgap="10" vgap="10"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label fx:id="addLogHeader" text="%EditLog_Header"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="0"
+           GridPane.columnSpan="3"/>
+
+    <Label fx:id="editLogTourName" text="%AddTour_Name"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="1"/>
+    <Label fx:id="tourName"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="1"/>
+
+    <Label fx:id="editLogDuration" text="%AddLog_Duration"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="2"/>
+    <TextField fx:id="editLogDurationTextField"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="2" />
+    <Label fx:id="editLogDurationFormat" text ="%AddLog_DurationFormat"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="3"/>
+
+
+    <Label fx:id="editLogDifficulty" text="%AddLog_Difficulty"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="4" />
+    <ChoiceBox fx:id="editLogDifficultyChoiceBox"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="4"
+               GridPane.columnSpan="2" />
+    <Label fx:id="editLogDifficultyRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="4"/>
+
+    <Label fx:id="editLogRating" text="%AddLog_Rating"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="5" />
+    <ChoiceBox fx:id="editLogRatingChoiceBox"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="5"
+               GridPane.columnSpan="2" />
+    <Label fx:id="editLogRatingRequired" text="*"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="5"/>
+
+    <Label fx:id="editLogComment" text="%AddLog_Comment"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="6"
+           GridPane.columnSpan="2" />
+    <TextArea fx:id="editLogCommentTextArea"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="7"
+              GridPane.columnSpan="2" />
+
+    <Label fx:id="inputRequired" text="%Input_Required"
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="8" />
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1"
+          GridPane.rowIndex="8">
+        <Button fx:id="editLogCancelButton" text="%Cancel" onAction="#onEditLogCancelButton"/>
+        <Button fx:id="editLogOKButton" text="%OK" onAction="#onEditLogOKButton"/>
+    </HBox>
+
+
+
+    <stylesheets>
+        <URL value="@../css/addLogStyle.css" />
+    </stylesheets>
+</GridPane>

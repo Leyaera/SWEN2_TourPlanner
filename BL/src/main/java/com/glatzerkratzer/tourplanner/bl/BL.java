@@ -1,12 +1,6 @@
 package com.glatzerkratzer.tourplanner.bl;
 
-import com.glatzerkratzer.tourplanner.model.TourItem;
-import com.glatzerkratzer.tourplanner.model.TransportType;
-import com.glatzerkratzer.tourplanner.mq.MapQuestService;
 import lombok.Getter;
-import org.json.JSONObject;
-
-import java.io.IOException;
 
 
 @Getter
@@ -15,19 +9,18 @@ public class BL {
     //
     // TOUR BL
     //
-    DALL Dall = new DALL();
+    TourBL tourBL = new TourBL();
+
+    //
+    // LOG BL
+    //
+    LogBL logBL = new LogBL();
 
 
     //
     // MAP QUEST BL
     //
     MQL Mql = new MQL();
-
-    //
-    // TOUR LOGS BL
-    //
-    // TLL Tll = new TLL();
-
 
 
     //

@@ -8,10 +8,73 @@
 
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsLogsController"
-          prefHeight="400.0" prefWidth="600.0">
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsLogsController">
+    <ToolBar HBox.hgrow="ALWAYS">
+        <Label text="%TourLog_Items"/>
+        <BorderPane HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addButton" onAction="#onButtonAdd">
+            <tooltip>
+                <Tooltip text="%TourLog_TooltipAddButton"/>
+            </tooltip>
+        </Button>
+        <Button fx:id="removeButton" onAction="#onButtonRemove">
+            <tooltip>
+                <Tooltip text="%TourLog_TooltipRemoveButton"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="editButton" onAction="#onButtonEdit">
+            <tooltip>
+                <Tooltip text="%TourLog_TooltipEditButton"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="refreshButton" onAction="#onButtonRefresh">
+            <tooltip>
+                <Tooltip text="%TourLog_TooltipRefreshButton"/>
+            </tooltip>
+        </Button>
+    </ToolBar>
+    <fx:include fx:id="logsSearchBar" source="LogSearchBar.fxml"/>
+
+    <TableView fx:id="tourLogTableView" HBox.hgrow="ALWAYS">
+        <columns>
+            <TableColumn text="%TourLog_TableColumn_Date" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="date_time"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="%TourLog_TableColumn_Difficulty">
+                <cellValueFactory>
+                    <PropertyValueFactory property="difficulty"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="%TourLog_TableColumn_Rating">
+                <cellValueFactory>
+                    <PropertyValueFactory property="rating"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="%TourLog_TableColumn_Duration">
+                <cellValueFactory>
+                    <PropertyValueFactory property="duration"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="%TourLog_TableColumn_Comment" prefWidth="300">
+                <cellValueFactory>
+                    <PropertyValueFactory property="comment"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <stylesheets>
+        <URL value="@../css/tourDetailsLogsStyle.css" />
+    </stylesheets>
 
 
-</AnchorPane>
+</VBox>

@@ -26,7 +26,7 @@ public class TourItemDao implements Dao<TourItem> {
     }
 
     @Override
-    public List<TourItem> getAll() {
+    public List<TourItem> getAll(int id) {
         List<TourItem> tourItems = new ArrayList<>();
         try {
             Connection connection = DatabaseService.getDatabaseService().getConnection();

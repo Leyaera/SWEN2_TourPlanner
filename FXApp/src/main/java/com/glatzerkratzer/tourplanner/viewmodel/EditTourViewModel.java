@@ -17,11 +17,11 @@ public class EditTourViewModel {
     }
 
     public void updateTour(String currentName) {
-        BL.getInstance().getDall().updateTour(currentName, tourItem);
+        BL.getInstance().getTourBL().updateTour(currentName, tourItem);
     }
 
     public boolean tourExists() {
-        return BL.getInstance().getDall().tourExists(tourItem);
+        return BL.getInstance().getTourBL().tourExists(tourItem);
     }
 
     public ObservableList<String> getChoiceBoxItems(Locale locale) {

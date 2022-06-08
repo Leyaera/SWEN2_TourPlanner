@@ -9,24 +9,27 @@
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<TextFlow xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.glatzerkratzer.tourplanner.view.TourDetailsDescriptionController">
+    <content>
+        <TextFlow>
+            <Text fx:id="tourDescriptionName"/>
 
-    <Text fx:id="tourDescriptionName"/>
+            <Text fx:id="tourDescriptionTransportType"/>
+            <Text fx:id="tourDescriptionDistance"/>
+            <Text fx:id="tourDescriptionDuration"/>
 
-    <Text fx:id="tourDescriptionTransportType"/>
-    <Text fx:id="tourDescriptionDistance"/>
-    <Text fx:id="tourDescriptionDuration"/>
-
-    <Text fx:id="tourDescriptionStartTag" />
-    <Text fx:id="tourDescriptionStart"/>
-    <Text fx:id="tourDescriptionDestinationTag" />
-    <Text fx:id="tourDescriptionDestination"/>
-    <Text fx:id="tourDescriptionDescriptionTag" />
-    <Text fx:id="tourDescriptionDescription"/>
+            <Text fx:id="tourDescriptionStartTag" />
+            <Text fx:id="tourDescriptionStart"/>
+            <Text fx:id="tourDescriptionDestinationTag" />
+            <Text fx:id="tourDescriptionDestination"/>
+            <Text fx:id="tourDescriptionDescriptionTag" />
+            <Text fx:id="tourDescriptionDescription"/>
+        </TextFlow>
+    </content>
 
     <stylesheets>
         <URL value="@../css/tourDetailsDescriptionStyle.css" />
     </stylesheets>
-</TextFlow>
+</ScrollPane>
