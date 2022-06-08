@@ -50,7 +50,7 @@
 
 ### User-Interface Structure
 
-https://github.com/StefanieG01/TourPlanner_Kratzer_Glatzer/UI_strucutre.jpg
+https://github.com/Leyaera/SWEN2_TourPlanner/ui_structure.jpg
 
 ## Hand-In
 
